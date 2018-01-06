@@ -1,0 +1,14 @@
+C:\Users\nirha\Desktop\Scraper\Scraper\bin\Debug\Scraper.exe.config
+C:\Users\nirha\Desktop\Scraper\Scraper\bin\Debug\Scraper.exe
+C:\Users\nirha\Desktop\Scraper\Scraper\bin\Debug\Scraper.pdb
+C:\Users\nirha\Desktop\Scraper\Scraper\bin\Debug\Fizzler.dll
+C:\Users\nirha\Desktop\Scraper\Scraper\bin\Debug\Fizzler.Systems.HtmlAgilityPack.dll
+C:\Users\nirha\Desktop\Scraper\Scraper\bin\Debug\HtmlAgilityPack.dll
+C:\Users\nirha\Desktop\Scraper\Scraper\bin\Debug\Newtonsoft.Json.dll
+C:\Users\nirha\Desktop\Scraper\Scraper\bin\Debug\Fizzler.xml
+C:\Users\nirha\Desktop\Scraper\Scraper\bin\Debug\Fizzler.Systems.HtmlAgilityPack.xml
+C:\Users\nirha\Desktop\Scraper\Scraper\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\nirha\Desktop\Scraper\Scraper\bin\Debug\HtmlAgilityPack.xml
+C:\Users\nirha\Desktop\Scraper\Scraper\obj\Debug\Scraper.exe
+C:\Users\nirha\Desktop\Scraper\Scraper\obj\Debug\Scraper.pdb
+C:\Users\nirha\Desktop\Scraper\Scraper\obj\Debug\Scraper.csprojResolveAssemblyReference.cache
