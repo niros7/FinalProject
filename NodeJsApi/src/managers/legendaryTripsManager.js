@@ -1,6 +1,8 @@
 let legendaryTripModel = require('../models/legendaryTripModel.js');
 
-function saveTrips(trips) {
+function saveTrips(trips, callback) {
+  callback();
+  return;
   let allTrips = []
   let error;
   for (let i = 0; i < trips.length; i++) {
@@ -8,7 +10,7 @@ function saveTrips(trips) {
     let currentTrip = new legendaryTripModel(trips[i]);
     allTrips.push(currentTrip);
   }
-  
+
   legendaryTripModel.collection.insert(allTrips, onInsert);
 
   function onInsert(err, docs) {
