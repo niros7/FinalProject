@@ -1,8 +1,11 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+let legendaryManager = require("../managers/legendaryTripsManager.js");
+
 
 router.get('/', function (req, res) {
-  res.send('example');
+  legendaryManager.saveTrips(null, err => console.log("error"));
+  console.log("done!");
 })
 
 module.exports = router;
