@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
 })
 
 router.get('/extract', function (req, res) {
-  legendaryManager.extractLocationsFromTrips(null, err => console.log("error"));
+  legendaryManager.extractLocationsFromTrips();
   console.log("done!");
 })
 

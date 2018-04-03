@@ -27,28 +27,43 @@ function saveTrips(trips, callback) {
 
 function extractLocationsFromTrips() {
   const nerServiceUrl = NerServiceUrl + "extract-entities"
-  legendaryTripModel.find((err, trips) => {
+  legendaryTripModel.find({}, (err, trips) => {
+    tipsAndTags = {
+      trip: undefined,
+      tags: undefined
+    }
 
-    for (var i = 0, len = trips.length; i < len; i++) {
-      let trip = trip[i]
-
+    trips.forEach(trip => {
       request({
         url: nerServiceUrl,
         method: "POST",
-        json: trips[i].Steps
+        json: trip.Steps
       }, (err, res) => {
         tagsForEachStep = res.body
 
-        for (let j = 0; j < tagForEachStep.length; j++) {
-          const tagsForStep = tagsForEachStep[j].filter((value, index, self) => {
-            return tagsForEachStep[j].indexOf(value) === index;
-          })
+        for (let j = 0; j < tagsForEachStep.length; j++) {
+          const tagsForStep = tagsForEachStep[j];
 
-          trip.Steps[j].Locations = tagsForStep
-
+          if (trip.Steps[j] && tagsForStep.length > 0) {
+            tagsForStep.forEach(tag => {
+              trip.Steps[j].Locations.push(tag)
+            });
+          }
         }
+
+        let documentId = {
+          "_id": trip._id
+        }
+
+        legendaryTripModel.findByIdAndUpdate(documentId, trip, {
+          new: true
+        }, function (err, model) {
+          console.log(err);
+          console.log(model.Steps.map(x => x.Locations));
+        })
+
       })
-    }
+    })
   })
 }
 
