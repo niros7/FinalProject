@@ -9,8 +9,15 @@ let legendaryTripSchema = new Schema({
   Destinations: [String],
   Duration: String,
   Themes: [String],
-  Steps: [{ Title: String, Content: String }]
-});
+  Steps: [{
+    Title: String,
+    Content: String,
+    Locations: [{
+      Text: String,
+      Label: String
+    }]
+  }]
+})
 
 let legendaryTripModel = mongoose.model('LegendaryTrip', legendaryTripSchema);
 

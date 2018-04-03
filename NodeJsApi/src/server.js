@@ -15,8 +15,5 @@ app.use(bodyParser.urlencoded({ extended: true }))
 require('./routes.js')(app)
 
 app.listen(3000, () => {
+    console.log("running on port 3000");
 })
-
-let legenderyManager = require('./managers/legendaryTripsManager.js');
-let data = require('./allTrips.js');
-//legenderyManager.saveTrips(data);

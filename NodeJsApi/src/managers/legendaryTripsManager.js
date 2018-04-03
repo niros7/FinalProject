@@ -1,3 +1,5 @@
+let request = require('request');
+const NerServiceUrl = require('../settings.js').NerServiceUrl
 let legendaryTripModel = require('../models/legendaryTripModel.js');
 
 function saveTrips(trips, callback) {
@@ -23,4 +25,35 @@ function saveTrips(trips, callback) {
 }
 
 
-module.exports = { saveTrips };
+function extractLocationsFromTrips() {
+  const nerServiceUrl = NerServiceUrl + "extract-entities"
+  legendaryTripModel.find((err, trips) => {
+
+    for (var i = 0, len = trips.length; i < len; i++) {
+      let trip = trip[i]
+
+      request({
+        url: nerServiceUrl,
+        method: "POST",
+        json: trips[i].Steps
+      }, (err, res) => {
+        tagsForEachStep = res.body
+
+        for (let j = 0; j < tagForEachStep.length; j++) {
+          const tagsForStep = tagsForEachStep[j].filter((value, index, self) => {
+            return tagsForEachStep[j].indexOf(value) === index;
+          })
+
+          trip.Steps[j].Locations = tagsForStep
+
+        }
+      })
+    }
+  })
+}
+
+
+module.exports = {
+  saveTrips,
+  extractLocationsFromTrips
+};
