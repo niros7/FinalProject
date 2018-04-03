@@ -1,6 +1,0 @@
-mongodb://admin:1234@ds239117.mlab.com:39117/colman
-
-url: ds239117.mlab.com:39117
-user: admin
-password: 1234
-dbname: colman
