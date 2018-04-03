@@ -1,0 +1,29 @@
+#logo{
+    width: 30%;
+    float: left;
+}
+
+.demo-tab-group {
+    border: 1px solid #e8e8e8;
+  }
+  #navcontainer{
+      height: 10%;
+  }
+
+  #tabs
+  {
+      position: relative;
+      bottom: 10px;
+  }
+  .col-12{
+      width: 100%;
+  }
+  .banner{
+    
+      background: #f8fb73;
+      padding: 0.5em;
+  }
+#vision
+{
+   float: left;
+}
