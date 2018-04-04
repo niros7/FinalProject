@@ -1,103 +1,96 @@
 
-  <div class="container">
+  <div class="">
 
   <div class="banner" *appShowAuthed="false">
-          <div class="container" id="navcontainer"> 
-    <div class="row">
-      <div class="col-12">
-      <a  routerLink="/"><img id="logo" src="assets/images/logo.png"></a>
-      <div id="vision">Think less,Trip more.</div>
-      <!-- Show this for logged out users -->
-      <ul *appShowAuthed="false"
-        class="nav navbar-nav pull-xs-right">
+    <div class="" id="navcontainer"> 
+        <div class="row">
+          <div class="col-12">
+          <a  routerLink="/"><img id="logo" src="assets/images/logo.png"></a>
+          <div id="vision">Think less,Trip more.</div>
+          <!-- Show this for logged out users -->
+          <ul *appShowAuthed="false"
+            class="nav navbar-nav pull-xs-right">
 
-        <li class="nav-item">
-          <a class="nav-link"
-            routerLink="/">
-            Home
-          </a>
-        </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                routerLink="/">
+                Home
+              </a>
+            </li>
 
-        <li class="nav-item">
-          <a class="nav-link"
-            routerLink="/login"
-            routerLinkActive="active">
-            Sign in
-          </a>
-        </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                routerLink="/login"
+                routerLinkActive="active">
+                Sign in
+              </a>
+            </li>
 
-        <li class="nav-item">
-          <a class="nav-link"
-            routerLink="/register"
-            routerLinkActive="active">
-            Sign up
-          </a>
-        </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                routerLink="/register"
+                routerLinkActive="active">
+                Sign up
+              </a>
+            </li>
 
-      </ul>
+          </ul>
 
-      <!-- Show this for logged in users -->
-      <ul *appShowAuthed="true"
-        class="nav navbar-nav pull-xs-right">
+          <!-- Show this for logged in users -->
+          <ul *appShowAuthed="true"
+            class="nav navbar-nav pull-xs-right">
 
-        <li class="nav-item">
-          <a class="nav-link"
-            routerLink="/"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
-            Home
-          </a>
-        </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                routerLink="/"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                Home
+              </a>
+            </li>
 
-        <li class="nav-item">
-          <a class="nav-link"
-            routerLink="/editor"
-            routerLinkActive="active">
-            <i class="ion-compose"></i>&nbsp;New Article
-          </a>
-        </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                routerLink="/editor"
+                routerLinkActive="active">
+                <i class="ion-compose"></i>&nbsp;New Article
+              </a>
+            </li>
 
-        <li class="nav-item">
-          <a class="nav-link"
-            routerLink="/settings"
-            routerLinkActive="active">
-            <i class="ion-gear-a"></i>&nbsp;Settings
-          </a>
-        </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                routerLink="/settings"
+                routerLinkActive="active">
+                <i class="ion-gear-a"></i>&nbsp;Settings
+              </a>
+            </li>
 
-        <li class="nav-item">
-          <a class="nav-link"
-            [routerLink]="['/profile', currentUser.username]"
-            routerLinkActive="active">
-            <img [src]="currentUser.image" *ngIf="currentUser.image" class="user-pic" />
-            {{ currentUser.username }}
-          </a>
-        </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                [routerLink]="['/profile', currentUser.username]"
+                routerLinkActive="active">
+                <img [src]="currentUser.image" *ngIf="currentUser.image" class="user-pic" />
+                {{ currentUser.username }}
+              </a>
+            </li>
 
-      </ul>
-    </div>
-    </div>
-    
-
-    </div>
-  </div>
-    
-  <div class="row">
-    <div class="col-12">
-      <div id="tabs">
+          </ul>
+        </div>
+        </div>
+       <div id="tabsRow">
         <mat-tab-group class="demo-tab-group">
-          <mat-tab label="Tab 1">
-          
+          <mat-tab label="Search a Trip">
+
           </mat-tab>
-          <mat-tab label="Tab 2">
-        
+          <mat-tab label="Add a Trip">
+
           </mat-tab>
-          <mat-tab label="Tab 3" >
-          
+          <mat-tab label="Populars" >
+
           </mat-tab>
-        
+
         </mat-tab-group>
-      </div>
+       </div>
     </div>
   </div>
   </div>
