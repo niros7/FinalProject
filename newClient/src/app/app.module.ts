@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-/*import { BrowserAnimationsModule } from '@angular/platform-browser/animations';*/
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /*import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MatTabsModule } from '@angular/material';*/
 import {MatTabsModule} from '@angular/material/tabs';
 
@@ -46,7 +46,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     ProfileModule,
     rootRouting,
     SharedModule,
-    /*BrowserAnimationsModule,*/
+    BrowserAnimationsModule,
     SettingsModule,
     MatTabsModule,
   ],

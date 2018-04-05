@@ -78,18 +78,15 @@
         </div>
         </div>
        <div id="tabsRow">
-        <mat-tab-group class="demo-tab-group">
-          <mat-tab label="Search a Trip">
-
-          </mat-tab>
-          <mat-tab label="Add a Trip">
-
-          </mat-tab>
-          <mat-tab label="Populars" >
-
-          </mat-tab>
-
-        </mat-tab-group>
+          <button mat-raised-button routerLink="" (click)="changeBg(1)"
+          [ngClass] = "{'selectedBtn':selectedBtnIndex === 1}"
+          class="menuBtn">Plan a Trip</button>
+          <button mat-raised-button routerLink="tab2" (click)="changeBg(2)" 
+          [ngClass] = "{'selectedBtn':selectedBtnIndex === 2}"
+          class="menuBtn">Add a Trip</button>
+          <button mat-raised-button routerLink="tab3" (click)="changeBg(3)" 
+          [ngClass] = "{'selectedBtn':selectedBtnIndex === 3}"
+          class="menuBtn">Populars</button>
        </div>
     </div>
   </div>
