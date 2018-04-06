@@ -23,6 +23,8 @@
       background: #FFEB3B;
       padding: 0em !important;
       padding-bottom: 0em;
+      border-bottom-style: solid;
+      border-bottom-color: #9E9E9E;
   }
 
 #vision
@@ -38,4 +40,22 @@
 .row {
     padding: 0.5em !important;
     margin-right: 0 !important;
+}
+
+.menuBtn {
+    background-color: #FFCA28;
+    border-color: #FFE082;
+    width: 17%;
+    margin-right: 3px;
+    margin-left: -3px;
+    /* border-left: none; */
+    border-right: none;
+    border-top: none;
+    margin-bottom: -2px;
+}
+
+.selectedBtn {
+    background-color: #FF8F00;
+    outline: none;
+    border: 0;
 }

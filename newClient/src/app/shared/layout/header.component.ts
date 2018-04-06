@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   currentUser: User;
+  selectedBtnIndex: number=1;
 
   ngOnInit() {
     this.userService.currentUser.subscribe(
@@ -21,5 +22,9 @@ export class HeaderComponent implements OnInit {
         this.currentUser = userData;
       }
     );
+  }
+
+  changeBg(num) {
+      this.selectedBtnIndex = num;
   }
 }
