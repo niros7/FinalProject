@@ -17,6 +17,7 @@ const routes: Routes = [
   {
     path: '',
     component: SearchResultsComponent
+    //component: Tab1CompComponent
   },
   {
     path: 'tab2',

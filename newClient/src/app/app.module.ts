@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /*import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MatTabsModule } from '@angular/material';*/
-import {MatTabsModule} from '@angular/material/tabs';
+import {MatButtonModule, MatTabsModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatListModule, MatInputModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ArticleModule } from './article/article.module';
@@ -30,6 +30,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchTripsService } from './search-trips.service';
+import { ResultsListComponent } from './results-list/results-list.component';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
 
@@ -38,7 +39,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    ResultsListComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,13 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     BrowserAnimationsModule,
     SettingsModule,
     MatTabsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatMenuModule, 
+    MatToolbarModule, 
+    MatIconModule, 
+    MatListModule, 
+    MatInputModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true},
