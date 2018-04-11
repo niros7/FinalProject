@@ -28,6 +28,8 @@ import {
   HttpTokenInterceptor
 } from './shared';
 import { FormsModule } from '@angular/forms';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchTripsService } from './search-trips.service';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
 
@@ -35,7 +37,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
   declarations: [
     AppComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     JwtService,
     ProfilesService,
     TagsService,
-    UserService
+    UserService,
+    SearchTripsService
   ],
   bootstrap: [AppComponent]
 })

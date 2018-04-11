@@ -11,11 +11,12 @@ import { ShowAuthedDirective } from './show-authed.directive';
 import { Tab1CompComponent } from '../tab1-comp/tab1-comp.component';
 import { Tab2CompComponent } from '../tab2-comp/tab2-comp.component';
 import { Tab3CompComponent } from '../tab3-comp/tab3-comp.component';
+import { SearchResultsComponent } from '../search-results/search-results.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: Tab1CompComponent
+    component: SearchResultsComponent
   },
   {
     path: 'tab2',

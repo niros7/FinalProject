@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
   console.log("done!");
 })
 
-router.post('/Trips', function (req, res) {
+router.get('/Trips', function (req, res) {
   console.log("Got a POST request for the homepage");
   legendaryManager.getTrips(req, function(data, err) {
     if (err==null) {
