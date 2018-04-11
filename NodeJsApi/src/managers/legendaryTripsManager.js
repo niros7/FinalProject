@@ -22,5 +22,18 @@ function saveTrips(trips, callback) {
   }
 }
 
+/**
+ * Get trips from the db according to the parameters
+ */
+function getTrips(params, callback) {
+  // For now, we select x trips whithout the 'where' cluase
+  var query = legendaryTripModel.find({}).limit(5);
+  query.exec(function(err,data){
+      callback(data);
+  });
 
-module.exports = { saveTrips };
+  return;
+}
+
+
+module.exports = { saveTrips, getTrips };
