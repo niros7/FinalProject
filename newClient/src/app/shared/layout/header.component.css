@@ -25,6 +25,7 @@
       padding-bottom: 0em;
       border-bottom-style: solid;
       border-bottom-color: #9E9E9E;
+      margin-bottom: 0px;
   }
 
 #vision
@@ -51,7 +52,6 @@
     /* border-left: none; */
     border-right: none;
     border-top: none;
-    margin-bottom: -2px;
 }
 
 .selectedBtn {
