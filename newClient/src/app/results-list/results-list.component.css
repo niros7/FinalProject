@@ -1,7 +1,20 @@
-.example-card {
-    margin-right: 70vw;
-}
-
 ul {
     list-style-type: none;
+    background-color: #FAFAFA;
+    margin-right: 70vw;
+    padding-left: 1vh;
+    padding: 1vh;
+  }
+
+  .resultCard{
+    
+    margin-bottom: 2vh;
+  }
+
+  .cardThemes{
+      background-color: #9E9E9E;
+  }
+
+  .header{
+      background-color: white;
   }
