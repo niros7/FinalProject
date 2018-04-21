@@ -38,3 +38,4 @@ app.listen(3000, () => {
 let legenderyManager = require('./managers/legendaryTripsManager.js');
 let data = require('./allTrips.js');
 //legenderyManager.saveTrips(data);
+//legenderyManager.getAllLocations();
