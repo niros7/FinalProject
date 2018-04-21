@@ -6,7 +6,7 @@
 		            <!--      Wizard container        -->
 		            <div class="wizard-container">
 		                <div class="card wizard-card" data-color="green" id="wizard">
-		                <form action="" method="">
+		                <form id="formSearch" action="" method="">
 		                <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
 
 		                    	<div class="wizard-header">
@@ -104,7 +104,7 @@
                                             <div class="col-sm-2 col-sm-offset-2">
                                                 <div class="form-group">
                                                     <label>Amount</label><br>
-                                                    <input type="text" value="10" placeholder="Input" class="form-control border-input" />
+                                                    <input type="text" name="amount" value="10" placeholder="Input" class="form-control border-input" />
                                                 </div>
 		                                	</div>
                                             <div class="col-sm-6">
@@ -127,7 +127,7 @@
 		                                    <div class="col-sm-8 col-sm-offset-2">
 		                                        <div class="col-sm-4 col-sm-offset-2">
 													<div class="choice" data-toggle="wizard-checkbox">
-		                                                <input type="checkbox" name="jobb" value="Design">
+		                                                <input type="checkbox" name="drive" value="false">
 		                                                <div class="card card-checkboxes card-hover-effect">
 		                                                    <i class="ti-car"></i>
 															<p>I want to Drive!</p>
@@ -136,7 +136,7 @@
 		                                        </div>
 		                                        <div class="col-sm-4">
 													<div class="choice" data-toggle="wizard-checkbox">
-		                                                <input type="checkbox" name="jobb" value="Design">
+		                                                <input type="checkbox" name="walk" value="false">
 		                                                <div class="card card-checkboxes card-hover-effect">
 		                                                    <i class="ti-map-alt"></i>
 															<p>I want to Walk!</p>
@@ -148,29 +148,46 @@
 		                            </div>
 		                            <div class="tab-pane" id="tags">
 		                                <h5 class="info-text">Select the best tags for your trip! </h5>
-                                                <button class="btn btn-info btn-fill" data-toggle="wizard-tag">     Romantic </button>
-                                                <button class="btn btn-success btn-fill" data-toggle="wizard-tag">  Hiking   </button>
-                                                <button class="btn btn-info btn-fill" data-toggle="wizard-tag">     Relax    </button>
-                                                <button class="btn btn-success btn-fill" data-toggle="wizard-tag">  Nature   </button>
-                                                <button class="btn btn-danger" data-toggle="wizard-tag">            Forest   </button>
-                                                <button class="btn btn-success" data-toggle="wizard-tag">           Default  </button>
-                                                <button class="btn btn-danger" data-toggle="wizard-tag">            Default  </button>
-                                                <button class="btn btn-danger" data-toggle="wizard-tag">            Default  </button>
-                                                <button class="btn btn-danger btn-fill" data-toggle="wizard-tag">   Filled   </button>
-                                                <button class="btn btn-success btn-fill" data-toggle="wizard-tag">  Desert   </button>
-                                                <button class="btn btn-info" data-toggle="wizard-tag">              Rush     </button>
-                                                <button class="btn btn-success" data-toggle="wizard-tag">           Default  </button>
-                                                <button class="btn btn-danger btn-fill" data-toggle="wizard-tag">   Filled   </button>
-                                                <button class="btn btn-info btn-fill" data-toggle="wizard-tag">     Animals  </button>
-                                                <button class="btn btn-info btn-fill" data-toggle="wizard-tag">     Filled   </button>
-                                                <button class="btn btn-success" data-toggle="wizard-tag">           Default  </button>
+										
+												<div class="col-sm-3">
+													<div class="choice" data-toggle="wizard-checkbox">
+		                                                <input type="checkbox" name="romantic" value="false">
+		                                                <div class="card card-checkboxes card-hover-effect">
+															<p>Romantic</p>
+		                                                </div>
+		                                            </div>
+		                                        </div>
+												<div class="col-sm-3">
+													<div class="choice" data-toggle="wizard-checkbox">
+		                                                <input type="checkbox" name="hiking" value="false">
+		                                                <div class="card card-checkboxes card-hover-effect">
+															<p>Hiking</p>
+		                                                </div>
+		                                            </div>
+		                                        </div>
+												<div class="col-sm-3">
+													<div class="choice" data-toggle="wizard-checkbox">
+		                                                <input type="checkbox" name="ski" value="false">
+		                                                <div class="card card-checkboxes card-hover-effect">
+															<p>Ski</p>
+		                                                </div>
+		                                            </div>
+		                                        </div>
+												<div class="col-sm-3">
+													<div class="choice" data-toggle="wizard-checkbox">
+		                                                <input type="checkbox" name="nature" value="false">
+		                                                <div class="card card-checkboxes card-hover-effect">
+															<p>Nature</p>
+		                                                </div>
+		                                            </div>
+		                                        </div>
 		                            </div>
                                     
 		                        </div>
 		                        <div class="wizard-footer">
 	                            	<div class="pull-right">
 	                                    <input type='button' class='btn btn-next btn-fill btn-success btn-wd' name='next' value='Next' />
-	                                    <input type='button' class='btn btn-finish btn-fill btn-success btn-wd formSearch' name='finish' value='Finish' />
+	                                    <input type='submit' class='btn btn-finish btn-fill btn-success btn-wd' name='finish' value='Finish' />
 									</div>
 
 	                                <div class="pull-left">

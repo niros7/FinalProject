@@ -11,5 +11,5 @@ export class Tab2CompComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
 }

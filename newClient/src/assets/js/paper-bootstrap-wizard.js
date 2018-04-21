@@ -19,6 +19,7 @@ searchVisible = 0;
 transparent = true;
 
         $(document).ready(function(){
+			
 
             /*  Activate the tooltips      */
             $('[rel="tooltip"]').tooltip();
@@ -134,18 +135,59 @@ transparent = true;
                         $(this).addClass('btn-fill');
                     }
                 });
-			
-				 //כאן תמיר
-				$(".btn-finish").click(function(){ 
-                    if( $(this).hasClass('formSearch')){  // We are in search wizard
-                       console.log("Search Wizard Finished!");
-						
-                    } else if( $(this).hasClass('formAdd')) {  // We are in add-trip wizard
-                        console.log("Add-Trip Wizard Finished!");
-                    }
-                });
+				 
             
                 $('.set-full-height').css('height', 'auto');
+			
+				var formResult;
+
+				var formSearch = document.getElementById("formSearch");
+				if(formSearch != undefined && formSearch != null){
+					
+						formSearch.onsubmit = function(){
+							
+							formResults = {}
+							formResults["country"] = formSearch.country.value;
+							formResults["city"] =    formSearch.city.value;
+							formResults["amount"] =    formSearch.amount.value;
+							formResults["period"] =    formSearch.period.value;
+							formResults["drive"] =    formSearch.drive.value;
+							formResults["walk"] =    formSearch.walk.value;
+							formResults["romantic"] =    formSearch.romantic.value;
+							formResults["hiking"] =    formSearch.hiking.value;
+							formResults["ski"] =    formSearch.ski.value;
+							formResults["nature"] =    formSearch.nature.value;
+
+							
+							console.log(formResults);
+							
+						}
+				}
+			
+				var formAdd = document.getElementById("formAdd");
+				if(formAdd != undefined && formAdd != null){
+					
+						formSearch.onsubmit = function(){
+							
+							formResults = {}
+							formResults["country"] = formSearch.country.value;
+							formResults["city"] =    formSearch.city.value;
+							formResults["amount"] =    formSearch.amount.value;
+							formResults["period"] =    formSearch.period.value;
+							formResults["drive"] =    formSearch.drive.value;
+							formResults["walk"] =    formSearch.walk.value;
+							formResults["romantic"] =    formSearch.romantic.value;
+							formResults["hiking"] =    formSearch.hiking.value;
+							formResults["ski"] =    formSearch.ski.value;
+							formResults["nature"] =    formSearch.nature.value;
+
+							
+							console.log(formResults);
+							
+						}
+				}
+											
+											
 
             });
 

@@ -12,8 +12,5 @@ export class WizardComponent implements OnInit {
   ngOnInit() {
   }
   
-    onClickMe(e){
-  		console.log(e);
-    }
 
 }
