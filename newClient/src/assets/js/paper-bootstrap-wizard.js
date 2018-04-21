@@ -134,6 +134,16 @@ transparent = true;
                         $(this).addClass('btn-fill');
                     }
                 });
+			
+				 //כאן תמיר
+				$(".btn-finish").click(function(){ 
+                    if( $(this).hasClass('formSearch')){  // We are in search wizard
+                       console.log("Search Wizard Finished!");
+						
+                    } else if( $(this).hasClass('formAdd')) {  // We are in add-trip wizard
+                        console.log("Add-Trip Wizard Finished!");
+                    }
+                });
             
                 $('.set-full-height').css('height', 'auto');
 
