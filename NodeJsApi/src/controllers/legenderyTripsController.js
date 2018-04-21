@@ -19,4 +19,14 @@ router.get('/Trips', function (req, res) {
   })
 })
 
+router.get('/Locations', function (req,res){
+  legendaryManager.getAllLocations(req, function(data, err)  {
+    if (err==null) {
+      res.send(data);
+    } else {
+      res.send('Error');
+    }
+  })
+})
+
 module.exports = router;

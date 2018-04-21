@@ -1,8 +1,10 @@
+import { AutoCompleteComponent } from './Components/auto-complete/auto-complete.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
+import { MatAutocompleteModule, MatInputModule } from '@angular/material';
 
 import { ArticleListComponent, ArticleMetaComponent, ArticlePreviewComponent } from './article-helpers';
 import { FavoriteButtonComponent, FollowButtonComponent } from './buttons';
@@ -12,6 +14,7 @@ import { Tab1CompComponent } from '../tab1-comp/tab1-comp.component';
 import { Tab2CompComponent } from '../tab2-comp/tab2-comp.component';
 import { Tab3CompComponent } from '../tab3-comp/tab3-comp.component';
 import { SearchResultsComponent } from '../search-results/search-results.component';
+
 
 const routes: Routes = [
   {
@@ -35,7 +38,9 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatAutocompleteModule,
+    MatInputModule
   ],
   declarations: [
     ArticleListComponent,
@@ -47,7 +52,8 @@ const routes: Routes = [
     ShowAuthedDirective,
     Tab1CompComponent,
     Tab2CompComponent,
-    Tab3CompComponent
+    Tab3CompComponent,
+    AutoCompleteComponent
   ],
   exports: [
     ArticleListComponent,
@@ -61,7 +67,8 @@ const routes: Routes = [
     HttpClientModule,
     ListErrorsComponent,
     RouterModule,
-    ShowAuthedDirective
+    ShowAuthedDirective,
+    AutoCompleteComponent
   ]
 })
 export class SharedModule {}
