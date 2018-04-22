@@ -19,6 +19,7 @@ searchVisible = 0;
 transparent = true;
 
         $(document).ready(function(){
+			
 
             /*  Activate the tooltips      */
             $('[rel="tooltip"]').tooltip();
@@ -134,8 +135,14 @@ transparent = true;
                         $(this).addClass('btn-fill');
                     }
                 });
+				 
             
                 $('.set-full-height').css('height', 'auto');
+			
+
+
+											
+											
 
             });
 

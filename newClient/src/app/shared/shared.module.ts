@@ -21,7 +21,6 @@ const routes: Routes = [
   {
     path: '',
     component: WizardComponent
-    //component: Tab1CompComponent
   },
   {
     path: 'tab2',
