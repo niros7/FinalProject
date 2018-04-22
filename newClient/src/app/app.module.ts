@@ -31,6 +31,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchTripsService } from './search-trips.service';
 import { ResultsListComponent } from './results-list/results-list.component';
+import { WizardComponent } from './wizard/wizard.component';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
 
@@ -40,7 +41,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     FooterComponent,
     HeaderComponent,
     SearchResultsComponent,
-    ResultsListComponent
+    ResultsListComponent,
+	WizardComponent
   ],
   imports: [
     BrowserModule,
