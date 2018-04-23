@@ -25,12 +25,15 @@ import {
   SharedModule,
   TagsService,
   UserService,
-  HttpTokenInterceptor
+  HttpTokenInterceptor,
+  ItinerariesService,
+  GeolocationService
 } from './shared';
 import { FormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchTripsService } from './search-trips.service';
 import { ResultsListComponent } from './results-list/results-list.component';
+import { ItineraryMapComponent } from './itinerary-map/itinerary-map.component';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
 
@@ -40,7 +43,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     FooterComponent,
     HeaderComponent,
     SearchResultsComponent,
-    ResultsListComponent
+    ResultsListComponent,
+    ItineraryMapComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +76,9 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     ProfilesService,
     TagsService,
     UserService,
-    SearchTripsService
+    SearchTripsService,
+    ItinerariesService,
+    GeolocationService
   ],
   bootstrap: [AppComponent]
 })

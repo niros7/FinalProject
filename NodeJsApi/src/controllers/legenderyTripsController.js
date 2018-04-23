@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
   console.log("done!");
 })
 
-router.get('/Trips', function (req, res) {
+router.get('/trips', function (req, res) {
   console.log("Got a POST request for the homepage");
   legendaryManager.getTrips(req, function(data, err) {
     if (err==null) {
@@ -16,6 +16,13 @@ router.get('/Trips', function (req, res) {
     } else {
       res.send('Error');
     }
+  })
+})
+
+router.get('/trips/:id', (req, res) => {
+  legendaryManager.getTripItinerary(req.params.id, (data) => {
+    console.log(data);
+    res.send(data)
   })
 })
 

@@ -17,7 +17,6 @@ export class SearchResultsComponent implements OnInit {
 
   searchTrips(): void {
     this.searchTripsService.searchTrips().subscribe(trips => { 
-      debugger;
       this.trips = trips; 
     }, error => this.errorMessage = <any>error);
   }

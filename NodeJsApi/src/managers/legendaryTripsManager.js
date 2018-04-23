@@ -27,7 +27,7 @@ function saveTrips(trips, callback) {
  */
 function getTrips(params, callback) {
   // For now, we select x trips whithout the 'where' cluase
-  var query = legendaryTripModel.find({}).limit(5);
+  let query = legendaryTripModel.find({}).limit(5);
   query.exec(function(err,data){
       callback(data);
   });
@@ -36,4 +36,19 @@ function getTrips(params, callback) {
 }
 
 
-module.exports = { saveTrips, getTrips };
+function getTripItinerary(id, cb) {
+  let query = legendaryTripModel.findById(id, (err, data) => {
+    if(!data) {
+      return undefined
+    } else {
+      let result = {
+        "_id": data._id,
+        "locations": data.Destinations
+      }
+
+      cb(result)
+    }
+  })
+}
+
+module.exports = { saveTrips, getTrips, getTripItinerary };
