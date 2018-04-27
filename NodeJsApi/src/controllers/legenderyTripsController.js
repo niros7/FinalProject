@@ -19,6 +19,16 @@ router.get('/trips', function (req, res) {
   })
 })
 
+router.get('/Locations', function (req,res){
+  legendaryManager.getAllLocations(req, function(data, err)  {
+    if (err==null) {
+      res.send(data);
+    } else {
+      res.send('Error');
+    }
+  })
+})
+
 router.get('/trips/:id', (req, res) => {
   legendaryManager.getTripItinerary(req.params.id, (data) => {
     console.log(data);

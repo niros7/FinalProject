@@ -4,3 +4,5 @@ NodeJsApi/node_modules/
 NodeJsApi/package-lock\.json
 
 newClient/node_modules/
+
+NodeJsApi/.vscode/

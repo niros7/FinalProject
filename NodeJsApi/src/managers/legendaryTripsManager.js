@@ -35,7 +35,18 @@ function getTrips(params, callback) {
   return;
 }
 
+function getAllLocations(params,callback){
 
+  var query = legendaryTripModel.aggregate([{$unwind:"$Steps"},
+  {$project :{_id:1, Steps:{Locations:{Text:1}}, Destinations:1}},
+     { $project: { Locations: { $concatArrays: [ "$Steps.Locations.Text", "$Destinations" ] } } },
+     {$unwind:"$Locations"},
+     {$group:{_id: "$Locations"}},
+     {$project:{_id:0,Location: "$_id"}}
+  ]);
+  query.exec(function(err,data){
+    callback(data);
+});
 function getTripItinerary(id, cb) {
   let query = legendaryTripModel.findById(id, (err, data) => {
     if(!data) {
