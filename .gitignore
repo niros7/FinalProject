@@ -6,3 +6,5 @@ NodeJsApi/package-lock\.json
 newClient/node_modules/
 
 NodeJsApi/.vscode/
+
+newClient/dist/

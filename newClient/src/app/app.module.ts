@@ -1,18 +1,56 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  ModuleWithProviders,
+  NgModule
+} from '@angular/core';
+import {
+  BrowserModule
+} from '@angular/platform-browser';
+import {
+  RouterModule
+} from '@angular/router';
+import {
+  HTTP_INTERCEPTORS
+} from '@angular/common/http';
+import {
+  BrowserAnimationsModule
+} from '@angular/platform-browser/animations';
 /*import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MatTabsModule } from '@angular/material';*/
-import {MatButtonModule, MatTabsModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatListModule, MatInputModule, MatChipsModule, MatDividerModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatTabsModule,
+  MatCardModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatListModule,
+  MatInputModule,
+  MatChipsModule,
+  MatDividerModule,
+  MatList,
+  MatListItem
+} from '@angular/material';
 
-import { AppComponent } from './app.component';
-import { ArticleModule } from './article/article.module';
-import { AuthModule } from './auth/auth.module';
-import { EditorModule } from './editor/editor.module';
-import { HomeModule } from './home/home.module';
-import { ProfileModule } from './profile/profile.module';
-import { SettingsModule } from './settings/settings.module';
+import {
+  AppComponent
+} from './app.component';
+import {
+  ArticleModule
+} from './article/article.module';
+import {
+  AuthModule
+} from './auth/auth.module';
+import {
+  EditorModule
+} from './editor/editor.module';
+import {
+  HomeModule
+} from './home/home.module';
+import {
+  ProfileModule
+} from './profile/profile.module';
+import {
+  SettingsModule
+} from './settings/settings.module';
 import {
   ApiService,
   ArticlesService,
@@ -29,12 +67,24 @@ import {
   ItinerariesService,
   GeolocationService
 } from './shared';
-import { FormsModule } from '@angular/forms';
-import { SearchResultsComponent } from './search-results/search-results.component';
-import { SearchTripsService } from './search-trips.service';
-import { ResultsListComponent } from './results-list/results-list.component';
-import { ItineraryMapComponent } from './itinerary-map/itinerary-map.component';
-import { WizardComponent } from './wizard/wizard.component';
+import {
+  FormsModule
+} from '@angular/forms';
+import {
+  SearchResultsComponent
+} from './search-results/search-results.component';
+import {
+  SearchTripsService
+} from './search-trips.service';
+import {
+  ResultsListComponent
+} from './results-list/results-list.component';
+import {
+  ItineraryMapComponent
+} from './itinerary-map/itinerary-map.component';
+import {
+  WizardComponent
+} from './wizard/wizard.component';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
 
@@ -44,9 +94,9 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     FooterComponent,
     HeaderComponent,
     SearchResultsComponent,
-    ItineraryMapComponent
+    ItineraryMapComponent,
     ResultsListComponent,
-	WizardComponent
+    WizardComponent
   ],
   imports: [
     BrowserModule,
@@ -62,16 +112,19 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     MatTabsModule,
     MatCardModule,
     MatButtonModule,
-    MatMenuModule, 
-    MatToolbarModule, 
-    MatIconModule, 
-    MatListModule, 
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
     MatInputModule,
     MatChipsModule,
     MatDividerModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true},
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpTokenInterceptor,
+      multi: true
+    },
     ApiService,
     ArticlesService,
     AuthGuard,
@@ -86,4 +139,4 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -7,7 +7,9 @@ import {
 import {
   createClient
 } from '@google/maps'
-import { fromPromise } from 'rxjs/observable/fromPromise';
+import {
+  fromPromise
+} from 'rxjs/observable/fromPromise';
 
 
 @Injectable()
@@ -29,15 +31,21 @@ export class GeolocationService {
     }).asPromise()
   }
 
-  addressesToLatLong(addresses: Array < string > ) {
-    debugger;
+  addressesToLatLong(addresses: Array < string > ): Promise < Array < google.maps.LatLng >> {
+
+    let distinctAddresses = addresses.filter((elem, pos, arr) => {
+      return arr.indexOf(elem) == pos;
+    });
+
     let LatLongOfAllLocations = []
 
-    addresses.forEach(currentAddress => {
+    distinctAddresses.forEach(currentAddress => {
       LatLongOfAllLocations.push(this.addressToLatLong(currentAddress))
     });
 
-    Promise.all(LatLongOfAllLocations).then((values) => console.log(values.json.results));
+    return Promise.all(LatLongOfAllLocations).then((values) => {
+      return values.map(val => val.json.results[0].geometry.location)
+    });
   }
 
 }

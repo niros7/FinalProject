@@ -1,6 +1,6 @@
 <ul [style.overflow]="'auto'" [style.height.vh]="'80'">
     <li *ngFor="let trip of data" class="resultCard">
-        <mat-card class="example-card cardThemes" >
+        <mat-card  (click)="selectTrip(trip._id)" class="example-card cardThemes" >
           <mat-card-header >
             <mat-card-title>{{trip.Title}}</mat-card-title>
             <mat-card-subtitle>{{trip.SubTitle}}</mat-card-subtitle>

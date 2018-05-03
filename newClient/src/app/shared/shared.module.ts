@@ -20,7 +20,7 @@ import { SearchResultsComponent } from '../search-results/search-results.compone
 const routes: Routes = [
   {
     path: '',
-    component: WizardComponent
+    component: SearchResultsComponent
   },
   {
     path: 'tab2',

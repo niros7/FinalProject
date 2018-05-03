@@ -47,6 +47,9 @@ function getAllLocations(params,callback){
   query.exec(function(err,data){
     callback(data);
 });
+}
+
+
 function getTripItinerary(id, cb) {
   let query = legendaryTripModel.findById(id, (err, data) => {
     if(!data) {
@@ -62,4 +65,4 @@ function getTripItinerary(id, cb) {
   })
 }
 
-module.exports = { saveTrips, getTrips, getTripItinerary };
+module.exports = { saveTrips, getTrips, getTripItinerary, getAllLocations }
