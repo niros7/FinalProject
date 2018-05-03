@@ -118,7 +118,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     MatListModule,
     MatInputModule,
     MatChipsModule,
-    MatDividerModule
+    MatDividerModule,
   ],
   providers: [{
       provide: HTTP_INTERCEPTORS,

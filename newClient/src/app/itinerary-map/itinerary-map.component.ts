@@ -21,8 +21,10 @@ export class ItineraryMapComponent implements OnInit {
   constructor(private itinerariesService: ItinerariesService, private geoLocationService: GeolocationService) { }
 
   ngOnInit() {
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
 
     var mapProp = {
+      center: latlng,
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
