@@ -14,21 +14,6 @@ import {
 import {
   BrowserAnimationsModule
 } from '@angular/platform-browser/animations';
-/*import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MatTabsModule } from '@angular/material';*/
-import {
-  MatButtonModule,
-  MatTabsModule,
-  MatCardModule,
-  MatMenuModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatListModule,
-  MatInputModule,
-  MatChipsModule,
-  MatDividerModule,
-  MatList,
-  MatListItem
-} from '@angular/material';
 
 import {
   AppComponent
@@ -86,6 +71,8 @@ import {
   WizardComponent
 } from './wizard/wizard.component';
 
+import { MatModule } from './mat.module'
+
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
 
 @NgModule({
@@ -109,16 +96,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     SharedModule,
     BrowserAnimationsModule,
     SettingsModule,
-    MatTabsModule,
-    MatCardModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatListModule,
-    MatInputModule,
-    MatChipsModule,
-    MatDividerModule,
+    MatModule
   ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
