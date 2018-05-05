@@ -3,6 +3,10 @@
     float: left;
 }
 
+.toolbar {
+    background-image: url(/assets/images/matos.jpg);
+}
+
 .demo-tab-group {
     /*border: 1px solid #e8e8e8;*/
   }
@@ -19,8 +23,8 @@
       width: 100%;
   }
   .banner{
-    
-      background: #FFEB3B;
+      
+      /*background: #FFEB3B;*/
       padding: 0em !important;
       padding-bottom: 0em;
       border-bottom-style: solid;

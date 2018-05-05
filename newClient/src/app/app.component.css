@@ -19,4 +19,9 @@ body {
 
 .toolbar {
   margin-bottom: 3vh;
+  
+}
+
+mat-toolbar.toolbar.mat-toolbar.mat-primary.mat-toolbar-single-row {
+  background-image: url(/assets/images/matos.jpg);
 }
