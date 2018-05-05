@@ -34,14 +34,6 @@
 												Time
 											</a>
 										</li>
-                                        <li>
-											<a href="#transport" data-toggle="tab">
-												<div class="icon-circle">
-													<i class="ti-car"></i>
-												</div>
-												Transport
-											</a>
-										</li>
 			                            <li>
 											<a href="#tags" data-toggle="tab">
 												<div class="icon-circle">
@@ -58,6 +50,16 @@
 		                                	<div class="col-sm-12">
 		                                    	<h5 class="info-text"> Let's start with the basic details</h5>
 		                            		</div>
+											
+											
+											<div class="col-md-4"></div>
+											<div class="col-sm-5">
+												<div class="form-group">
+		                                            <label>Location:</label><br>
+													<app-auto-complete></app-auto-complete>
+												</div>
+											</div>
+<!--
                                             <div class="col-sm-5 col-sm-offset-1">
 		                                    	<div class="form-group">
 		                                            <label>Country</label><br>
@@ -92,6 +94,7 @@
 		                                            </select>
 		                                    	</div>
 		                                	</div>
+-->
 
 		                            	</div>
 		                            </div>
@@ -120,31 +123,6 @@
 		                                	</div>
                                         </div>
                                         
-		                            </div>
-                                    <div class="tab-pane" id="transport">
-		                                <h5 class="info-text">What type of trip would you like? </h5>
-		                                <div class="row">
-		                                    <div class="col-sm-8 col-sm-offset-2">
-		                                        <div class="col-sm-4 col-sm-offset-2">
-													<div class="choice" data-toggle="wizard-checkbox">
-		                                                <input type="checkbox" name="drive" value="false">
-		                                                <div class="card card-checkboxes card-hover-effect">
-		                                                    <i class="ti-car"></i>
-															<p>I want to Drive!</p>
-		                                                </div>
-		                                            </div>
-		                                        </div>
-		                                        <div class="col-sm-4">
-													<div class="choice" data-toggle="wizard-checkbox">
-		                                                <input type="checkbox" name="walk" value="false">
-		                                                <div class="card card-checkboxes card-hover-effect">
-		                                                    <i class="ti-map-alt"></i>
-															<p>I want to Walk!</p>
-		                                                </div>
-		                                            </div>
-		                                        </div>
-		                                    </div>
-		                                </div>
 		                            </div>
 		                            <div class="tab-pane" id="tags">
 		                                <h5 class="info-text">Select the best tags for your trip! </h5>
