@@ -39,7 +39,8 @@ export class ItineraryMapComponent implements OnInit {
             this.selectedItinerariesGeolocations = res;
             this.deleteMarkers()
             this.markers = res.map<google.maps.Marker>(geoLocation => {
-              this.map.setCenter(new google.maps.LatLng(geoLocation.lat, geoLocation.lng));
+              //this.map.setCenter(new google.maps.LatLng(geoLocation.lat(), geoLocation.lng()));
+              this.map.setCenter(geoLocation);
               return new google.maps.Marker({
                 position: geoLocation,
                 map: this.map
