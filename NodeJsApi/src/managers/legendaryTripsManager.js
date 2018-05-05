@@ -49,6 +49,15 @@ function getAllLocations(params,callback){
 });
 }
 
+function getAllThemes(params,callback){
+ var query = legendaryTripModel.aggregate([
+    { $project: { items: { $concatArrays: [ "$Themes" ] } } }
+ ]);
+    console.log("123");
+  query.exec(function(err,data){
+    callback(data);
+});
+}
 
 function getTripItinerary(id, cb) {
   let query = legendaryTripModel.findById(id, (err, data) => {
@@ -65,4 +74,4 @@ function getTripItinerary(id, cb) {
   })
 }
 
-module.exports = { saveTrips, getTrips, getTripItinerary, getAllLocations }
+module.exports = { saveTrips, getTrips, getTripItinerary, getAllLocations, getAllThemes }
