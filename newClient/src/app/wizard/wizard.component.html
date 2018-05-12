@@ -126,39 +126,14 @@
 		                            </div>
 		                            <div class="tab-pane" id="tags">
 		                                <h5 class="info-text">Select the best tags for your trip! </h5>
-										
-												<div class="col-sm-3">
-													<div class="choice" data-toggle="wizard-checkbox">
-		                                                <input type="checkbox" name="romantic" value="false">
-		                                                <div class="card card-checkboxes card-hover-effect">
-															<p>Romantic</p>
-		                                                </div>
-		                                            </div>
-		                                        </div>
-												<div class="col-sm-3">
-													<div class="choice" data-toggle="wizard-checkbox">
-		                                                <input type="checkbox" name="hiking" value="false">
-		                                                <div class="card card-checkboxes card-hover-effect">
-															<p>Hiking</p>
-		                                                </div>
-		                                            </div>
-		                                        </div>
-												<div class="col-sm-3">
-													<div class="choice" data-toggle="wizard-checkbox">
-		                                                <input type="checkbox" name="ski" value="false">
-		                                                <div class="card card-checkboxes card-hover-effect">
-															<p>Ski</p>
-		                                                </div>
-		                                            </div>
-		                                        </div>
-												<div class="col-sm-3">
-													<div class="choice" data-toggle="wizard-checkbox">
-		                                                <input type="checkbox" name="nature" value="false">
-		                                                <div class="card card-checkboxes card-hover-effect">
-															<p>Nature</p>
-		                                                </div>
-		                                            </div>
-		                                        </div>
+										<div class="col-sm-3" *ngFor="let theme of themes">
+											<div class="choice" data-toggle="wizard-checkbox">
+												<input type="checkbox" name="{{theme.item}}" value="false">
+												<div class="card card-checkboxes card-hover-effect">
+													<p>{{theme.item}}</p>
+												</div>
+											</div>
+										</div>
 		                            </div>
                                     
 		                        </div>

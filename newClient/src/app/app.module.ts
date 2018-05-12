@@ -62,6 +62,9 @@ import {
   SearchTripsService
 } from './search-trips.service';
 import {
+  ThemesService
+} from './themes.service';
+import {
   ResultsListComponent
 } from './results-list/results-list.component';
 import {
@@ -112,6 +115,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     TagsService,
     UserService,
     SearchTripsService,
+    ThemesService,
     ItinerariesService,
     GeolocationService
   ],

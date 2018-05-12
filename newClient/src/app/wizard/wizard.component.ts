@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemesService } from '../themes.service';
 
 @Component({
   selector: 'app-wizard',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WizardComponent implements OnInit {
 
-  constructor() { }
+	constructor(private themesService: ThemesService) { }
+
+	themes: String[]; 
+  errorMessage: string;
 
   ngOnInit() {
+		this.themesService.getThemes().subscribe(themes => { 
+      this.themes = themes; 
+    }, error => this.errorMessage = <any>error);
   }
   
   
