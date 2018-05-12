@@ -51,10 +51,14 @@ function getAllLocations(params,callback){
 
 function getAllThemes(params,callback){
  var query = legendaryTripModel.aggregate([
-    { $project: { items: { $concatArrays: [ "$Themes" ] } } }
+    { $project: { items: { $concatArrays: [ "$Themes" ] } } },
+    {$unwind:"$items"},
+    {$group:{_id: "$items"}},
+    {$project:{_id:0,item: "$_id"}}
  ]);
     console.log("123");
   query.exec(function(err,data){
+    if (err != null) { callback (err);}
     callback(data);
 });
 }
