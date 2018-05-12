@@ -1,10 +1,10 @@
-<form class="auto-complete-form">
+<!--<form class="auto-complete-form">-->
   <mat-form-field class="example-full-width">
-    <input type="text" placeholder="search location" aria-label="Number" matInput [formControl]="searchTerm" [matAutocomplete]="auto">
+    <input type="text" name="location" aria-label="Number" matInput [formControl]="searchTerm" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let item of searchResult" [value]="item.Location">
         {{ item.Location }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-</form>
+<!--</form>-->

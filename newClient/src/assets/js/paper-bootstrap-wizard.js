@@ -25,21 +25,21 @@ transparent = true;
             $('[rel="tooltip"]').tooltip();
 
             // Code for the Validator
-            var $validator = $('.wizard-card form').validate({
-        		  rules: {
-        		    firstname: {
-        		      required: true,
-        		      minlength: 3
-        		    },
-        		    lastname: {
-        		      required: true,
-        		      minlength: 3
-        		    },
-        		    email: {
-        		      required: true
-        		    }
-                },
-        	});
+//            var $validator = $('.wizard-card form').validate({
+//        		  rules: {
+//        		    firstname: {
+//        		      required: true,
+//        		      minlength: 3
+//        		    },
+//        		    lastname: {
+//        		      required: true,
+//        		      minlength: 3
+//        		    },
+//        		    email: {
+//        		      required: true
+//        		    }
+//                },
+//        	});
 
             // Wizard Initialization
           	$('.wizard-card').bootstrapWizard({
@@ -48,11 +48,11 @@ transparent = true;
                 'previousSelector': '.btn-previous',
 
                 onNext: function(tab, navigation, index) {
-                	var $valid = $('.wizard-card form').valid();
-                	if(!$valid) {
-                		$validator.focusInvalid();
-                		return false;
-                	}
+//                	var $valid = $('.wizard-card form').valid();
+//                	if(!$valid) {
+//                		$validator.focusInvalid();
+//                		return false;
+//                	}
                 },
 
                 onInit : function(tab, navigation, index){
@@ -67,13 +67,13 @@ transparent = true;
 
                 onTabClick : function(tab, navigation, index){
 
-                    var $valid = $('.wizard-card form').valid();
-
-                    if(!$valid){
-                        return false;
-                    } else{
+//                    var $valid = $('.wizard-card form').valid();
+//
+//                    if(!$valid){
+//                        return false;
+//                    } else{
                         return true;
-                    }
+//                    }
 
                 },
 
