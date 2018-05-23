@@ -27,6 +27,8 @@
     "@angular/router": "^5.0.0",
     "@google/maps": "^0.4.6",
     "@types/googlemaps": "^3.30.8",
+    "angular5-social-login": "^1.0.9",
+    "angularx-social-login": "^1.1.8",
     "core-js": "^2.4.1",
     "marked": "^0.3.9",
     "rxjs": "^5.5.2",

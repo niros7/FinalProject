@@ -76,6 +76,32 @@ import {
 
 import { MatModule } from './mat.module'
 
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
+import { LoginOpt  } from "angularx-social-login";
+
+const fbLoginOptions: LoginOpt = {
+  scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
+  return_scopes: true,
+  enable_profile_selector: true
+}; // https://developers.facebook.com/docs/reference/javascript/FB.login/v2.11
+
+const googleLoginOptions: LoginOpt = {
+  scope: 'profile email'
+}; // https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig
+
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("635765527611-gb7sn0to64k182rnkuaj7g3b3otgnkv8.apps.googleusercontent.com")
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
+
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
 
 @NgModule({
@@ -99,7 +125,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     SharedModule,
     BrowserAnimationsModule,
     SettingsModule,
-    MatModule
+    MatModule,
+    SocialLoginModule
   ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
@@ -117,7 +144,11 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
     SearchTripsService,
     ThemesService,
     ItinerariesService,
-    GeolocationService
+    GeolocationService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
   ],
   bootstrap: [AppComponent]
 })

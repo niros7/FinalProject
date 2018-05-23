@@ -39,6 +39,9 @@ router.get('/Themes', function (req,res){
   })
 })
 
+router.post('/authGoogle', function (req,res){
+  console.log("authGoogle");
+})
 
 router.get('/trips/:id', (req, res) => {
   legendaryManager.getTripItinerary(req.params.id, (data) => {
