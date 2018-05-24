@@ -19,6 +19,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.authState.subscribe((user) => {
+      debugger;
       this.user = user;
       this.loggedIn = (user != null);
     });
@@ -30,6 +31,7 @@ export class AuthComponent implements OnInit {
   }
 
   signInWithFB(): void {
+    debugger;
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
   
