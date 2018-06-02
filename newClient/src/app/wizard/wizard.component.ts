@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemesService } from '../themes.service';
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-wizard',
@@ -33,26 +35,26 @@ export class WizardComponent implements OnInit {
   onSubmit()
   {
   		 var formSearch = document.querySelector('#formSearch');
-  
-		  var formResults = {};
+			 var formResults = {};
 
-			if(formSearch != undefined && formSearch != null){
+		  	if(formSearch != undefined && formSearch != null){
 
-				//get only selected tags.
+				//get only the selected tags.
 					var tags = document.getElementsByClassName("tagV");
-					console.log(tags);
 
 					for (let i = 0; i < tags.length; i++) {
 						formResults[tags[i].getAttributeNode("name").nodeValue] = true;
 					}
 
-				formResults["location"] =  formSearch.location.value;
-				formResults["amount"] =   formSearch.amount.value;
-				formResults["period"] =   formSearch.period.value;
-
+					formResults["amount"] = document.getElementById("amount").getAttribute("value");
+					formResults["period"] = $("#period").val();
+					formResults["location"] = $("#locationing").val();
+					
 				this.submitted = true;
+
+				//This is the form results!
 				console.log(formResults);			
-			}
+		  	}
 	
   }
 	
