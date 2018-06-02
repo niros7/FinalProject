@@ -1,3 +1,5 @@
+var geocluster = require("geocluster");
+
 import {
   Injectable
 } from '@angular/core';
@@ -10,7 +12,6 @@ import {
 import {
   fromPromise
 } from 'rxjs/observable/fromPromise';
-
 
 @Injectable()
 export class GeolocationService {
@@ -33,19 +34,39 @@ export class GeolocationService {
 
   addressesToLatLong(addresses: Array < string > ): Promise < Array < google.maps.LatLng >> {
 
-    let distinctAddresses = addresses.filter((elem, pos, arr) => {
+    let distinctedAddresses = addresses.filter((elem, pos, arr) => {
       return arr.indexOf(elem) == pos;
     });
 
     let LatLongOfAllLocations = []
 
-    distinctAddresses.forEach(currentAddress => {
+    distinctedAddresses.forEach(currentAddress => {
       LatLongOfAllLocations.push(this.addressToLatLong(currentAddress))
     });
 
     return Promise.all(LatLongOfAllLocations).then((values) => {
       return values.map(val => val.json.results[0].geometry.location)
     });
+  }
+
+  latLngToPrimitivesArray(locations: Array < google.maps.LatLng > ) {
+    return locations.map(location => {
+      return [location.lat, location.lng]
+    })
+  }
+
+  primitiveToLatlng(lat, lng) : google.maps.LatLng {
+    return new google.maps.LatLng(lat, lng)
+  }
+
+  removeOutliers(locations: Array < google.maps.LatLng >, bias: number = 1 ): Array < google.maps.LatLng > {
+    let locationsInPrimitiveForm = this.latLngToPrimitivesArray(locations)
+    var result = geocluster(locationsInPrimitiveForm, bias)
+    var biggestClusterIIndex = result.reduce((maxIndex, currentElement,i,arr) => {
+      return currentElement.elements.length > result[maxIndex].elements.length ? i : maxIndex 
+    }, 0)
+
+    return result[biggestClusterIIndex].elements.map(latlng => this.primitiveToLatlng(latlng[0], latlng[1]))
   }
 
 }

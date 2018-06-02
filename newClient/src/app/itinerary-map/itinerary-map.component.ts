@@ -12,7 +12,7 @@ import {  } from '@types/googlemaps';
 export class ItineraryMapComponent implements OnInit {
 
   selectedItinerary: itinerary = undefined
-  selectedItinerariesGeolocations: Array<object> = undefined
+  selectedItinerariesGeolocations: Array<google.maps.LatLng> = undefined
 
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
@@ -36,6 +36,7 @@ export class ItineraryMapComponent implements OnInit {
 
         this.geoLocationService.addressesToLatLong(this.selectedItinerary.locations)
           .then(res => {
+            res = this.geoLocationService.removeOutliers(res)
             this.selectedItinerariesGeolocations = res;
             this.deleteMarkers()
             this.markers = res.map<google.maps.Marker>(geoLocation => {
@@ -46,7 +47,7 @@ export class ItineraryMapComponent implements OnInit {
                 map: this.map
               })
             })
-            console.log(this.markers);
+
           })
       }
     })

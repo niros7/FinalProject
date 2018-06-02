@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemesService } from '../themes.service';
+import { GeolocationService } from '../shared/services/geolocation.service'
 declare var jquery: any;
 declare var $: any;
 
