@@ -59,41 +59,6 @@
 													<app-auto-complete></app-auto-complete>
 												</div>
 											</div>
-<!--
-                                            <div class="col-sm-5 col-sm-offset-1">
-		                                    	<div class="form-group">
-		                                            <label>Country</label><br>
-		                                            <select name="country" class="form-control">
-		                                                <option disabled="" selected="">- country -</option>
-		                                                <option value="Afghanistan"> Afghanistan </option>
-		                                                <option value="Albania"> Albania </option>
-		                                                <option value="Algeria"> Algeria </option>
-		                                                <option value="American Samoa"> American Samoa </option>
-		                                                <option value="Andorra"> Andorra </option>
-		                                                <option value="Angola"> Angola </option>
-		                                                <option value="Anguilla"> Anguilla </option>
-		                                                <option value="Antarctica"> Antarctica </option>
-		                                                <option value="...">...</option>
-		                                            </select>
-		                                        </div>
-		                                	</div>
-		                                	<div class="col-sm-5">
-		                                    	<div class="form-group">
-		                                        	<label>City</label>
-                                                    <select name="city" class="form-control">
-		                                                <option disabled="" selected="">- city -</option>
-		                                                <option value="Afghanistan"> Afghanistan </option>
-		                                                <option value="Albania"> Albania </option>
-		                                                <option value="Algeria"> Algeria </option>
-		                                                <option value="American Samoa"> American Samoa </option>
-		                                                <option value="Andorra"> Andorra </option>
-		                                                <option value="Angola"> Angola </option>
-		                                                <option value="Anguilla"> Anguilla </option>
-		                                                <option value="Antarctica"> Antarctica </option>
-		                                                <option value="...">...</option>
-		                                            </select>
-		                                    	</div>
-		                                	</div>
 -->
 
 		                            	</div>
@@ -107,13 +72,13 @@
                                             <div class="col-sm-2 col-sm-offset-2">
                                                 <div class="form-group">
                                                     <label>Amount</label><br>
-                                                    <input type="text" name="amount" value="10" placeholder="Input" class="form-control border-input" />
+                                                    <input id="amount" type="text" name="amount" value="10" placeholder="Input" class="form-control border-input" />
                                                 </div>
 		                                	</div>
                                             <div class="col-sm-6">
 		                                    	<div class="form-group">
 		                                            <label>Period</label><br>
-		                                            <select name="period" class="form-control">
+		                                            <select name="period" class="form-control" id="period">
 		                                                <option value="days"> Days </option>
 		                                                <option value="weeks"> Weeks </option>
                                                         <option value="months"> Months </option>
@@ -127,12 +92,12 @@
 		                            <div class="tab-pane" id="tags">
 		                                <h5 class="info-text">Select the best tags for your trip! </h5>
 										<div class="col-sm-3" *ngFor="let theme of themes">
-											<div class="choice" data-toggle="wizard-checkbox">
-												<input type="checkbox" name="{{theme.item}}" value="false">
-												<div class="card card-checkboxes card-hover-effect">
-													<p>{{theme.item}}</p>
-												</div>
-											</div>
+
+												<label class="containerit">{{theme.item}}
+													<input class="tag" type="checkbox" name="{{theme.item}}" (click)="toggleCheckbox($event)">
+													<span class="checkmark"></span>
+												</label>
+
 										</div>
 		                            </div>
                                     

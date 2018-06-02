@@ -20,8 +20,15 @@ export class WizardComponent implements OnInit {
   }
   
   
-  submitted = false;
-  
+	submitted = false;
+
+	toggleCheckbox(event) { 
+		const element = event.srcElement;
+		element.classList.toggle('tag');
+		element.classList.toggle('tagV');
+}
+	
+
   
   onSubmit()
   {
@@ -31,14 +38,17 @@ export class WizardComponent implements OnInit {
 
 			if(formSearch != undefined && formSearch != null){
 
+				//get only selected tags.
+					var tags = document.getElementsByClassName("tagV");
+					console.log(tags);
 
-				// formResults["location"] =  formSearch.location.value;
-				// formResults["amount"] =   formSearch.amount.value;
-				// formResults["period"] =   formSearch.period.value;
-				// formResults["romantic"] = formSearch.romantic.value;
-				// formResults["hiking"] =   formSearch.hiking.value;
-				// formResults["ski"] =      formSearch.ski.value;
-				// formResults["nature"] =   formSearch.nature.value;
+					for (let i = 0; i < tags.length; i++) {
+						formResults[tags[i].getAttributeNode("name").nodeValue] = true;
+					}
+
+				formResults["location"] =  formSearch.location.value;
+				formResults["amount"] =   formSearch.amount.value;
+				formResults["period"] =   formSearch.period.value;
 
 				this.submitted = true;
 				console.log(formResults);			
