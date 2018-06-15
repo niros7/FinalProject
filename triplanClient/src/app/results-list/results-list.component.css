@@ -1,0 +1,43 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-right: 1vw;
+    margin-bottom: 0;
+  }
+
+  .resultCard{
+    margin-bottom: 2vh;
+  }
+
+  .cardThemes{
+      background-color: #f2f1f0;
+  }
+
+  .header{
+      background-color: white;
+  }
+
+  .chipTheme {
+        padding: 0px 3px !important;
+        border-radius: 38px;
+        background-color: #777;
+  }
+
+  .mat-chip.mat-chip-selected.mat-primary {
+    background-color: #777;
+    color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 8px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
