@@ -37,6 +37,9 @@ import {
 import {
   WizardComponent
 } from './wizard/wizard.component';
+import {
+  Tab1CompComponent
+} from './tab1-comp/tab1-comp.component';
 
 import { MatModule } from './mat.module'
 
@@ -62,6 +65,7 @@ export function getAuthHttp(http: Http) {
     ItineraryMapComponent,
     ResultsListComponent,
     WizardComponent,
+    Tab1CompComponent,
     AutoCompleteComponent
   ],
   exports: [
@@ -82,15 +86,15 @@ export function getAuthHttp(http: Http) {
   ],
   providers: [
     UserService,
+    SearchTripsService,
+    ThemesService,
+    ItinerariesService,
+    GeolocationService,
     {
       provide: AuthHttp,
       useFactory: getAuthHttp,
       deps: [Http]
-    },
-    SearchTripsService,
-    ThemesService,
-    ItinerariesService,
-    GeolocationService
+    }
   ],
   bootstrap: [AppComponent]
 })

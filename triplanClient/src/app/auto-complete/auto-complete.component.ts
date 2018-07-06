@@ -14,6 +14,7 @@ export class AutoCompleteComponent implements OnInit {
   searchTerm: FormControl = new FormControl();
   searchResult = [];
   Locations = [];
+  errorMessage: String;
 
   constructor(private service: SearchTripsService) {
     this.searchTerm.valueChanges
@@ -28,7 +29,10 @@ export class AutoCompleteComponent implements OnInit {
 }
 
   ngOnInit() {
-    this.service.getLocations().subscribe(locations => {this.Locations = locations; } );
+    this.service.getLocations().then(locations => { 
+      this.Locations.concat(locations);
+      debugger;
+    }, error => this.errorMessage = <any>error);
   }
 
 }

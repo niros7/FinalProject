@@ -16,8 +16,10 @@ export class WizardComponent implements OnInit {
 	themes: String[]; 
   errorMessage: string;
 
-  ngOnInit() {
-	
+  ngOnInit() { 
+		/*this.themesService.getThemes().subscribe(themes => { 
+      this.themes = themes; 
+    }, error => this.errorMessage = <any>error);*/
   }
 	
 	logout() {

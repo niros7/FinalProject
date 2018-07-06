@@ -14,6 +14,8 @@ var mongoose = require('./mongoose'),
 mongoose();
 
 var User = require('mongoose').model('User');
+var legendaryTripModel = require('mongoose').model('LegendaryTrip');
+
 var passportConfig = require('./passport');
 
 //setup configuration for facebook login
@@ -79,6 +81,7 @@ var authenticate = expressJwt({
   secret: 'my-secret',
   requestProperty: 'auth',
   getToken: function(req) {
+    console.log(req.headers['x-auth-token']);
     if (req.headers['x-auth-token']) {
       return req.headers['x-auth-token'];
     }
@@ -117,10 +120,8 @@ var getTrips = function(req, res) {
  query.exec(function(err,data){
     console.log("data");
     console.log(data);
-     callback(data);
+    res.json(data);
  });
-
- return;
 };
 
 function getTripItinerary(req, res) {
@@ -134,13 +135,32 @@ function getTripItinerary(req, res) {
         "locations": data.Destinations
       }
 
-      cb(result)
+      res.json(result);
     }
   })
 };
 
+function getLocations(req, res) {
+  var query = legendaryTripModel.aggregate([{$unwind:"$Steps"},
+    {$project :{_id:1, Steps:{Locations:{Text:1}}, Destinations:1}},
+      { $project: { Locations: { $concatArrays: [ "$Steps.Locations.Text", "$Destinations" ] } } },
+      {$unwind:"$Locations"},
+      {$group:{_id: "$Locations"}},
+      {$project:{_id:0,Location: "$_id"}}
+    ]);
+    query.exec(function(err,data){
+      res.json(data);
+  });
+};
+
 router.route('/trips/:id')
   .get(authenticate, getTripItinerary);
+
+  router.route('/Trips')
+  .get(authenticate, getTrips);
+
+  router.route('/Locations')
+  .get(authenticate, getLocations);
 
 
 app.use('/api/v1', router);

@@ -44,7 +44,6 @@ export class UserService {
   }
 
   isLoggedIn() {
-    debugger;
     return new Promise((resolve, reject) => {
       this.getCurrentUser().then(user => resolve(true)).catch(() => reject(false));
     });

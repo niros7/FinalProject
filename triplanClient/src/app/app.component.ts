@@ -18,7 +18,6 @@ export class AppComponent implements OnInit{
   }
 
   menuButtonClicked(routName) {
-    debugger;
     this.router.navigate([routName]);
   }
 

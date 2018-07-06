@@ -22,7 +22,6 @@ export class ItineraryMapComponent implements OnInit {
   constructor(private itinerariesService: ItinerariesService, private geoLocationService: GeolocationService) { }
 
   ngOnInit() {
-    debugger;
     var latlng = new google.maps.LatLng(-34.397, 150.644);
 
     var mapProp = {

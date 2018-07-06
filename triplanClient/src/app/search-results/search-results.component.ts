@@ -16,8 +16,10 @@ export class SearchResultsComponent implements OnInit {
   errorMessage: string;
 
   searchTrips(): void {
-    this.searchTripsService.searchTrips().subscribe(trips => { 
-      this.trips = trips; 
+    debugger;
+    this.searchTripsService.searchTrips().then(searchedTrips => { 
+      this.trips = searchedTrips;
+      debugger;
     }, error => this.errorMessage = <any>error);
   }
 
