@@ -48,6 +48,7 @@ transparent = true;
                 'previousSelector': '.btn-previous',
 
                 onNext: function(tab, navigation, index) {
+                    debugger;
 //                	var $valid = $('.wizard-card form').valid();
 //                	if(!$valid) {
 //                		$validator.focusInvalid();

@@ -125,8 +125,11 @@ var getTrips = function(req, res) {
 };
 
 function getTripItinerary(req, res) {
-  id = req.params.id;
-  let query = legendaryTripModel.findById(id, (err, data) => {
+  console.log(req.params);
+  console.log(req.params.id);
+  
+  let query = legendaryTripModel.findById(req.params.id);
+  query.exec(function(err,data){
     if(!data) {
       return undefined
     } else {
@@ -137,7 +140,7 @@ function getTripItinerary(req, res) {
 
       res.json(result);
     }
-  })
+ });
 };
 
 function getLocations(req, res) {
@@ -153,14 +156,54 @@ function getLocations(req, res) {
   });
 };
 
+function getAllThemes(req, res){
+  var query = legendaryTripModel.aggregate([
+     { $project: { items: { $concatArrays: [ "$Themes" ] } } },
+     {$unwind:"$items"},
+     {$group:{_id: "$items"}},
+     {$project:{_id:0,item: "$_id"}}
+  ]);
+
+   query.exec(function(err,data){
+     if (err != null) { callback (err);}
+     console.log(data);
+     res.json(data);
+ });
+ };
+
+ function saveTrips(trips, callback) {
+  callback();
+  return;
+  let allTrips = []
+  let error;
+  for (let i = 0; i < trips.length; i++) {
+
+    let currentTrip = new legendaryTripModel(trips[i]);
+    allTrips.push(currentTrip);
+  }
+
+  legendaryTripModel.collection.insert(allTrips, onInsert);
+
+  function onInsert(err, docs) {
+    if (err) {
+      // TODO: find out how to return http 500 error
+    } else {
+      console.info('%d trips were successfully stored.', docs.length);
+    }
+  }
+};
+
 router.route('/trips/:id')
   .get(authenticate, getTripItinerary);
 
-  router.route('/Trips')
+router.route('/Trips')
   .get(authenticate, getTrips);
 
-  router.route('/Locations')
+router.route('/Locations')
   .get(authenticate, getLocations);
+
+router.route('/Themes')
+  .get(authenticate, getAllThemes);
 
 
 app.use('/api/v1', router);
