@@ -1,0 +1,167 @@
+  <div class="container">
+	   <!--   Big container   -->
+	    <div class="container" [hidden]="submitted">
+	        <div class="row">
+		        <div class="col-sm-8 col-sm-offset-2">
+
+		            <!--      Wizard container        -->
+		            <div class="wizard-container">
+		                <div class="card wizard-card" data-color="green" id="wizard">
+		                <form (ngSubmit)="onSubmit()" id="formSearch" action="" method="">
+		                <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
+
+		                    	<div class="wizard-header">
+		                        	<h3 class="wizard-title">List your place</h3>
+		                        	<p class="category">This information will let us know more about your place.</p>
+		                    	</div>
+								<div class="wizard-navigation">
+									<div class="progress-with-circle">
+									    <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" style="width: 15%;"></div>
+									</div>
+									<ul>
+			                            <li>
+											<a href="#location" data-toggle="tab">
+												<div class="icon-circle">
+													<i class="ti-map"></i>
+												</div>
+												Location
+											</a>
+										</li>
+			                            <li>
+											<a href="#time" data-toggle="tab">
+												<div class="icon-circle">
+													<i class="ti-time"></i>
+												</div>
+												Time
+											</a>
+										</li>
+			                            <li>
+											<a href="#tags" data-toggle="tab">
+												<div class="icon-circle">
+													<i class="ti-tag"></i>
+												</div>
+												Tags
+											</a>
+										</li>
+			                        </ul>
+								</div>
+		                        <div class="tab-content">
+		                            <div class="tab-pane" id="location">
+		                            	<div class="row">
+		                                	<div class="col-sm-12">
+		                                    	<h5 class="info-text"> Let's start with the basic details</h5>
+		                            		</div>
+											
+											
+											<div class="col-md-4"></div>
+											<div class="col-sm-5">
+												<div class="form-group">
+		                                            <label>Location:</label><br>
+													<app-auto-complete></app-auto-complete>
+												</div>
+											</div>
+<!--
+                                            <div class="col-sm-5 col-sm-offset-1">
+		                                    	<div class="form-group">
+		                                            <label>Country</label><br>
+		                                            <select name="country" class="form-control">
+		                                                <option disabled="" selected="">- country -</option>
+		                                                <option value="Afghanistan"> Afghanistan </option>
+		                                                <option value="Albania"> Albania </option>
+		                                                <option value="Algeria"> Algeria </option>
+		                                                <option value="American Samoa"> American Samoa </option>
+		                                                <option value="Andorra"> Andorra </option>
+		                                                <option value="Angola"> Angola </option>
+		                                                <option value="Anguilla"> Anguilla </option>
+		                                                <option value="Antarctica"> Antarctica </option>
+		                                                <option value="...">...</option>
+		                                            </select>
+		                                        </div>
+		                                	</div>
+		                                	<div class="col-sm-5">
+		                                    	<div class="form-group">
+		                                        	<label>City</label>
+                                                    <select name="city" class="form-control">
+		                                                <option disabled="" selected="">- city -</option>
+		                                                <option value="Afghanistan"> Afghanistan </option>
+		                                                <option value="Albania"> Albania </option>
+		                                                <option value="Algeria"> Algeria </option>
+		                                                <option value="American Samoa"> American Samoa </option>
+		                                                <option value="Andorra"> Andorra </option>
+		                                                <option value="Angola"> Angola </option>
+		                                                <option value="Anguilla"> Anguilla </option>
+		                                                <option value="Antarctica"> Antarctica </option>
+		                                                <option value="...">...</option>
+		                                            </select>
+		                                    	</div>
+		                                	</div>
+-->
+
+		                            	</div>
+		                            </div>
+		                            <div class="tab-pane" id="time"> 
+                                        
+		                                <h5 class="info-text">How much time would you like your trip to be? </h5> 
+                                        
+                                        <div class="row">
+                                            
+                                            <div class="col-sm-2 col-sm-offset-2">
+                                                <div class="form-group">
+                                                    <label>Amount</label><br>
+                                                    <input type="text" name="amount" value="10" placeholder="Input" class="form-control border-input" />
+                                                </div>
+		                                	</div>
+                                            <div class="col-sm-6">
+		                                    	<div class="form-group">
+		                                            <label>Period</label><br>
+		                                            <select name="period" class="form-control">
+		                                                <option value="days"> Days </option>
+		                                                <option value="weeks"> Weeks </option>
+                                                        <option value="months"> Months </option>
+                                                        <option value="years"> Years </option>
+		                                            </select>
+		                                        </div>
+		                                	</div>
+                                        </div>
+                                        
+		                            </div>
+		                            <div class="tab-pane" id="tags">
+		                                <h5 class="info-text">Select the best tags for your trip! </h5>
+										<div class="col-sm-3" *ngFor="let theme of themes">
+											<div class="choice" data-toggle="wizard-checkbox">
+												<input type="checkbox" name="{{theme.item}}" value="false">
+												<div class="card card-checkboxes card-hover-effect">
+													<p>{{theme.item}}</p>
+												</div>
+											</div>
+										</div>
+		                            </div>
+                                    
+		                        </div>
+		                        <div class="wizard-footer">
+	                            	<div class="pull-right">
+	                                    <input type='button' class='btn btn-next btn-fill btn-success btn-wd' name='next' value='Next' />
+	                                    <input type='submit' class='btn btn-finish btn-fill btn-success btn-wd' name='finish' value='Finish' />
+									</div>
+
+	                                <div class="pull-left">
+	                                    <input type='button' class='btn btn-previous btn-default btn-wd' name='previous' value='Previous' />
+	                                </div>
+	                                <div class="clearfix"></div>
+		                        </div>
+		                    </form>
+		                </div>
+		            </div> <!-- wizard container -->
+		        </div>
+	        </div> <!-- row -->
+	    </div> <!--  big container -->
+
+
+
+
+
+
+
+
+
+		<app-search-results [hidden]="!submitted"></app-search-results>
