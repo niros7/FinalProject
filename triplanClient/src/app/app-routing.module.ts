@@ -5,6 +5,7 @@ import { AnonymousGuard } from './anonymous-guard.guard';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WizardComponent } from './wizard/wizard.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 const appRoutes: Routes = [
     {
@@ -20,6 +21,11 @@ const appRoutes: Routes = [
     {
         path: 'wizard',
         component: WizardComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'search',
+        component: SearchResultsComponent,
         canActivate: [AuthGuard]
     },
     { path: '', redirectTo: 'welcome' , pathMatch: 'full' }

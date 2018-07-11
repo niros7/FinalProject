@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemesService } from '../themes.service';
+import { SearchTripsService } from '../search-trips.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,7 +12,8 @@ export class WizardComponent implements OnInit {
 	public currentUser : any = {};
 
 	constructor( private router: Router,
-		private themesService: ThemesService) { }
+		private themesService: ThemesService,
+		private searchTripService:SearchTripsService) { }
 
 	themes: String[]; 
   errorMessage: string;
@@ -33,7 +35,7 @@ export class WizardComponent implements OnInit {
   {
   		 var formSearch = document.querySelector('#formSearch');
   
-		  var formResults = {};
+		  var formParams = {};
 
 			if(formSearch != undefined && formSearch != null){
 
@@ -46,8 +48,11 @@ export class WizardComponent implements OnInit {
 				// formResults["ski"] =      formSearch.ski.value;
 				// formResults["nature"] =   formSearch.nature.value;
 
-				this.submitted = true;
-				console.log(formResults);			
+				//this.router.navigateByUrl(`/search?${search}`)
+				formParams["firstName"]="John";
+				formParams["lastName"]="Doe";
+				this.searchTripService.setSearchParameters(formParams);
+				this.router.navigateByUrl(`/search`);		
 			}
 	
   }

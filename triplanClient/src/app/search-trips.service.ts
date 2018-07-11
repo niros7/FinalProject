@@ -4,18 +4,23 @@ import { Trip } from './models/Trip.model';
 import { Observable } from 'rxjs/Observable';
 import {AuthHttp} from 'angular2-jwt';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json'
-  })
-};
-
 @Injectable()
 export class SearchTripsService {
 
-  url: string;
+  searchParam;
+
   constructor(private http: AuthHttp) { 
-    this.url = 'http://localhost:3000/api/v1/';
+    
+  }
+
+  setSearchParameters(param) {
+    debugger;
+    this.searchParam = param;
+  }
+
+  getSearchParameters() {
+    debugger;
+    return this.searchParam;
   }
 
   searchTrips() {

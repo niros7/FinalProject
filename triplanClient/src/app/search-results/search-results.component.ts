@@ -24,6 +24,8 @@ export class SearchResultsComponent implements OnInit {
   }
 
   ngOnInit() {
+    var a = this.searchTripsService.getSearchParameters();
+    debugger;
     this.searchTrips();
   }
 
