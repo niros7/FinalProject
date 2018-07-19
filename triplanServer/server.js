@@ -143,6 +143,20 @@ function getTripItinerary(req, res) {
  });
 };
 
+function getTripData(req, res) {
+  console.log(req.params);
+  let query = legendaryTripModel.findById(req.params.id);
+  query.exec(function(err,data){
+    if(!data) {
+      console.log("error");
+      return undefined
+    } else {
+      console.log(data);
+      res.json(data);
+    }
+ });
+};
+
 function getLocations(req, res) {
   var query = legendaryTripModel.aggregate([{$unwind:"$Steps"},
     {$project :{_id:1, Steps:{Locations:{Text:1}}, Destinations:1}},
@@ -195,6 +209,9 @@ function getAllThemes(req, res){
 
 router.route('/trips/:id')
   .get(authenticate, getTripItinerary);
+
+  router.route('/trip/:id')
+  .get(authenticate, getTripData);
 
 router.route('/Trips')
   .get(authenticate, getTrips);

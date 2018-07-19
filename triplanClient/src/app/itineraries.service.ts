@@ -26,7 +26,6 @@ export class ItinerariesService {
 
     return new Promise<itinerary>((resolve, reject) => {
       return this.http.get('http://localhost:3000/api/v1/trips/' + id).toPromise().then(response => {
-        debugger;
         var itineraryDetails = response.json() as itinerary;
         this.selectedItinerary.next(itineraryDetails)
         resolve(itineraryDetails);

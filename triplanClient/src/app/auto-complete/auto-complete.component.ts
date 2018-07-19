@@ -17,10 +17,12 @@ export class AutoCompleteComponent implements OnInit {
   errorMessage: String;
 
   constructor(private service: SearchTripsService) {
+    debugger;
     this.searchTerm.valueChanges
     .debounceTime(400)
     .subscribe(data => {
       this.searchResult = [];
+      debugger;
       this.Locations.map(location => {
        if (String(location.Location).includes(data)) {
         this.searchResult.push(location);
@@ -30,7 +32,8 @@ export class AutoCompleteComponent implements OnInit {
 
   ngOnInit() {
     this.service.getLocations().then(locations => { 
-      this.Locations.concat(locations);
+      debugger;
+      this.Locations = locations;
       debugger;
     }, error => this.errorMessage = <any>error);
   }

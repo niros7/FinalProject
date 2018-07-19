@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WizardComponent } from './wizard/wizard.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { Tab1CompComponent } from './tab1-comp/tab1-comp.component';
 
 const appRoutes: Routes = [
     {
@@ -26,6 +27,11 @@ const appRoutes: Routes = [
     {
         path: 'search',
         component: SearchResultsComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'cmp',
+        component: Tab1CompComponent,
         canActivate: [AuthGuard]
     },
     { path: '', redirectTo: 'welcome' , pathMatch: 'full' }

@@ -13,7 +13,7 @@
 var bootstrapWizardCreate = function(element, options) {
 	var element = $(element);
 	var obj = this;
-	
+	debugger;
 	// selector skips any 'li' elements that do not contain a child with a tab data-toggle
 	var baseItemSelector = 'li:has([data-toggle="tab"])';
 
@@ -24,10 +24,12 @@ var bootstrapWizardCreate = function(element, options) {
 	
 	this.rebindClick = function(selector, fn)
 	{
+		debugger;
 		selector.unbind('click', fn).bind('click', fn);
 	}
 
 	this.fixNavigationButtons = function() {
+		debugger;
 		// Get the current active tab
 		if(!$activeTab.length) {
 			// Select first one
@@ -51,7 +53,7 @@ var bootstrapWizardCreate = function(element, options) {
 	};
 
 	this.next = function(e) {
-
+		debugger;
 		// If we clicked the last then dont activate this
 		if(element.hasClass('last')) {
 			return false;
@@ -70,7 +72,7 @@ var bootstrapWizardCreate = function(element, options) {
 	};
 
 	this.previous = function(e) {
-
+		debugger;
 		// If we clicked the first then dont activate this
 		if(element.hasClass('first')) {
 			return false;
@@ -88,6 +90,7 @@ var bootstrapWizardCreate = function(element, options) {
 	};
 
 	this.first = function(e) {
+		debugger;
 		if($settings.onFirst && typeof $settings.onFirst === 'function' && $settings.onFirst($activeTab, $navigation, obj.firstIndex())===false){
 			return false;
 		}
@@ -100,6 +103,7 @@ var bootstrapWizardCreate = function(element, options) {
 
 	};
 	this.last = function(e) {
+		debugger;
 		if($settings.onLast && typeof $settings.onLast === 'function' && $settings.onLast($activeTab, $navigation, obj.lastIndex())===false){
 			return false;
 		}
@@ -111,39 +115,50 @@ var bootstrapWizardCreate = function(element, options) {
 		$navigation.find(baseItemSelector + ':eq('+obj.navigationLength()+') a').tab('show');
 	};
 	this.currentIndex = function() {
+		debugger;
 		return $navigation.find(baseItemSelector).index($activeTab);
 	};
 	this.firstIndex = function() {
+		debugger;
 		return 0;
 	};
 	this.lastIndex = function() {
+		debugger;
 		return obj.navigationLength();
 	};
 	this.getIndex = function(e) {
+		debugger;
 		return $navigation.find(baseItemSelector).index(e);
 	};
 	this.nextIndex = function() {
+		debugger;
 		return $navigation.find(baseItemSelector).index($activeTab) + 1;
 	};
 	this.previousIndex = function() {
+		debugger;
 		return $navigation.find(baseItemSelector).index($activeTab) - 1;
 	};
 	this.navigationLength = function() {
+		debugger;
 		return $navigation.find(baseItemSelector).length - 1;
 	};
 	this.activeTab = function() {
+		debugger;
 		return $activeTab;
 	};
 	this.nextTab = function() {
+		debugger;
 		return $navigation.find(baseItemSelector + ':eq('+(obj.currentIndex()+1)+')').length ? $navigation.find(baseItemSelector + ':eq('+(obj.currentIndex()+1)+')') : null;
 	};
 	this.previousTab = function() {
+		debugger;
 		if(obj.currentIndex() <= 0) {
 			return null;
 		}
 		return $navigation.find(baseItemSelector + ':eq('+parseInt(obj.currentIndex()-1)+')');
 	};
 	this.show = function(index) {
+		debugger;
 		if (isNaN(index)) {
 			return element.find(baseItemSelector + ' a[href=#' + index + ']').tab('show');
 		}
@@ -152,18 +167,22 @@ var bootstrapWizardCreate = function(element, options) {
 		}
 	};
 	this.disable = function(index) {
+		debugger;
 		$navigation.find(baseItemSelector + ':eq('+index+')').addClass('disabled');
 	};
 	this.enable = function(index) {
+		debugger;
 		$navigation.find(baseItemSelector + ':eq('+index+')').removeClass('disabled');
 	};
 	this.hide = function(index) {
+		debugger;
 		$navigation.find(baseItemSelector + ':eq('+index+')').hide();
 	};
 	this.display = function(index) {
 		$navigation.find(baseItemSelector + ':eq('+index+')').show();
 	};
 	this.remove = function(args) {
+		debugger;
 		var $index = args[0];
 		var $removeTabPane = typeof args[1] != 'undefined' ? args[1] : false;
 		var $item = $navigation.find(baseItemSelector + ':eq('+$index+')');
@@ -179,6 +198,7 @@ var bootstrapWizardCreate = function(element, options) {
 	};
 	
 	var innerTabClick = function (e) {
+		debugger;
 		// Get the index of the clicked tab
 		var clickedIndex = $navigation.find(baseItemSelector).index($(e.currentTarget).parent(baseItemSelector));
 		if($settings.onTabClick && typeof $settings.onTabClick === 'function' && $settings.onTabClick($activeTab, $navigation, obj.currentIndex(), clickedIndex)===false){
@@ -187,6 +207,7 @@ var bootstrapWizardCreate = function(element, options) {
 	};
 	
 	var innerTabShown = function (e) {  // use shown instead of show to help prevent double firing
+		debugger;
 		$element = $(e.target).parent();
 		var nextTab = $navigation.find(baseItemSelector).index($element);
 
@@ -204,7 +225,7 @@ var bootstrapWizardCreate = function(element, options) {
 	};
 	
 	this.resetWizard = function() {
-		
+		debugger;
 		// remove the existing handlers
 		$('a[data-toggle="tab"]', $navigation).off('click', innerTabClick);
 		$('a[data-toggle="tab"]', $navigation).off('shown shown.bs.tab', innerTabShown);
@@ -225,15 +246,18 @@ var bootstrapWizardCreate = function(element, options) {
 
 	if(!$navigation.hasClass($settings.tabClass)) {
 		$navigation.addClass($settings.tabClass);
+		debugger;
 	}
 
 	// Load onInit
 	if($settings.onInit && typeof $settings.onInit === 'function'){
 		$settings.onInit($activeTab, $navigation, 0);
+		debugger;
 	}
 
 	// Load onShow
 	if($settings.onShow && typeof $settings.onShow === 'function'){
+		debugger;
 		$settings.onShow($activeTab, $navigation, obj.nextIndex());
 	}
 
@@ -243,6 +267,7 @@ var bootstrapWizardCreate = function(element, options) {
 	$('a[data-toggle="tab"]', $navigation).on('shown shown.bs.tab', innerTabShown);
 };
 $.fn.bootstrapWizard = function(options) {
+	debugger;
 	//expose methods
 	if (typeof options == 'string') {
 		var args = Array.prototype.slice.call(arguments, 1)
@@ -252,6 +277,7 @@ $.fn.bootstrapWizard = function(options) {
 		return this.data('bootstrapWizard')[options](args);
 	}
 	return this.each(function(index){
+		debugger;
 		var element = $(this);
 		// Return early if this element already has a plugin instance
 		if (element.data('bootstrapWizard')) return;

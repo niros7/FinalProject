@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import {Trip} from '../models/Trip.model'
 import { ItinerariesService } from '../itineraries.service'
+import { SearchTripsService } from '../search-trips.service'
+import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { TripDetailsComponent } from '../trip-details/trip-details.component';
 
 @Component({
   selector: 'app-results-list',
@@ -10,14 +13,24 @@ import { ItinerariesService } from '../itineraries.service'
 export class ResultsListComponent implements OnInit {
 
   @Input() data: Trip[];
-  
-  constructor(private itinerariesService: ItinerariesService) { }
+
+  isShowTripDtl:boolean;
+
+  constructor(private itinerariesService: ItinerariesService,
+              private searchTripService: SearchTripsService,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.isShowTripDtl = false;
   }
 
   selectTrip(id: string) {
-    this.itinerariesService.changeSelectedItinerary(id)
+    this.itinerariesService.changeSelectedItinerary(id);
   }
 
+  showTripDetails(id) {
+    this.isShowTripDtl = true;
+    this.searchTripService.cahangeDialog(true);
+    this.searchTripService.setTripId(id);
+  }
 }

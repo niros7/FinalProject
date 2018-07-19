@@ -19,25 +19,33 @@ export class WizardComponent implements OnInit {
   errorMessage: string;
 
   ngOnInit() { 
-		/*this.themesService.getThemes().subscribe(themes => { 
+		
+		this.themesService.getThemes().then(themes => { 
       this.themes = themes; 
-    }, error => this.errorMessage = <any>error);*/
+    }, error => this.errorMessage = <any>error);
   }
 	
 	logout() {
    
   }
   
-  submitted = false;
+	submitted = false;
+	
+	toggleCheckbox(event) { 
+		debugger;
+		const element = event.srcElement;
+		element.classList.toggle('tag');
+		element.classList.toggle('tagV');
+}
   
-  
-  onSubmit()
+ finishFunction()
   {
+		debugger;
   		 var formSearch = document.querySelector('#formSearch');
   
-		  var formParams = {};
+		  //var formParams = {};
 
-			if(formSearch != undefined && formSearch != null){
+			//if(formSearch != undefined && formSearch != null){
 
 
 				// formResults["location"] =  formSearch.location.value;
@@ -49,9 +57,9 @@ export class WizardComponent implements OnInit {
 				// formResults["nature"] =   formSearch.nature.value;
 
 				//this.router.navigateByUrl(`/search?${search}`)
-				formParams["firstName"]="John";
-				formParams["lastName"]="Doe";
-				this.searchTripService.setSearchParameters(formParams);
+				//formParams["firstName"]="John";
+				//formParams["lastName"]="Doe";
+				//this.searchTripService.setSearchParameters(formParams);
 				this.router.navigateByUrl(`/search`);		
 			}
 	

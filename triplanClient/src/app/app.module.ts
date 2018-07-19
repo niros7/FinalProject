@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, Http } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http'; 
 import { AlertModule } from 'ngx-bootstrap';
@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {ItinerariesService} from './itineraries.service'; 
 import {GeolocationService} from './geolocation.service';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
-
+import { MatIconModule} from '@angular/material';
 
 import {
   BrowserAnimationsModule
@@ -44,7 +44,10 @@ import {
 import { MatModule } from './mat.module'
 
 import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
-import { MatAutocompleteModule, MatInputModule } from '@angular/material';
+import { MatAutocompleteModule, MatInputModule, MatDialogModule } from '@angular/material';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { TripDetailsComponent } from './trip-details/trip-details.component';
+import { ArchwizardModule } from 'angular-archwizard';
 
 export function getAuthHttp(http: Http) {
   return new AuthHttp(new AuthConfig({
@@ -66,14 +69,20 @@ export function getAuthHttp(http: Http) {
     ResultsListComponent,
     WizardComponent,
     Tab1CompComponent,
-    AutoCompleteComponent
+    AutoCompleteComponent,
+    TripDetailsComponent
+  ],
+  entryComponents: [
+    TripDetailsComponent
   ],
   exports: [
+    ReactiveFormsModule,
     AutoCompleteComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AlertModule.forRoot(),
     AppRoutingModule,
@@ -82,7 +91,11 @@ export function getAuthHttp(http: Http) {
     MatModule,
     MatAutocompleteModule,
     MatInputModule,
-    HttpClientModule
+    MatDialogModule,
+    HttpClientModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    ArchwizardModule
   ],
   providers: [
     UserService,

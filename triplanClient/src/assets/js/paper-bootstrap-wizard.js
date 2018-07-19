@@ -19,7 +19,7 @@ searchVisible = 0;
 transparent = true;
 
         $(document).ready(function(){
-			
+			debugger;
 
             /*  Activate the tooltips      */
             $('[rel="tooltip"]').tooltip();
@@ -57,7 +57,7 @@ transparent = true;
                 },
 
                 onInit : function(tab, navigation, index){
-
+                    debugger;
                   //check number of tabs and fill the entire row
                   var $total = navigation.find('li').length;
                   $width = 100/$total;
@@ -67,7 +67,7 @@ transparent = true;
                 },
 
                 onTabClick : function(tab, navigation, index){
-
+                    debugger;
 //                    var $valid = $('.wizard-card form').valid();
 //
 //                    if(!$valid){
@@ -79,6 +79,7 @@ transparent = true;
                 },
 
                 onTabShow: function(tab, navigation, index) {
+                    debugger;
                     var $total = navigation.find('li').length;
                     var $current = index+1;
 
@@ -109,9 +110,11 @@ transparent = true;
                 // Prepare the preview for profile picture
                 $("#wizard-picture").change(function(){
                     readURL(this);
+                    debugger;
                 });
 
                 $('[data-toggle="wizard-radio"]').click(function(){
+                    debugger;
                     wizard = $(this).closest('.wizard-card');
                     wizard.find('[data-toggle="wizard-radio"]').removeClass('active');
                     $(this).addClass('active');
@@ -120,6 +123,7 @@ transparent = true;
                 });
 
                 $('[data-toggle="wizard-checkbox"]').click(function(){
+                    debugger;
                     if( $(this).hasClass('active')){
                         $(this).removeClass('active');
                         $(this).find('[type="checkbox"]').removeAttr('checked');
@@ -130,6 +134,7 @@ transparent = true;
                 });
             
                 $('[data-toggle="wizard-tag"]').click(function(){
+                    debugger;
                     if( $(this).hasClass('btn-fill')){
                         $(this).removeClass('btn-fill');
                     } else {
@@ -159,6 +164,7 @@ transparent = true;
          //Function to show image before upload
 
         function readURL(input) {
+            debugger;
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
