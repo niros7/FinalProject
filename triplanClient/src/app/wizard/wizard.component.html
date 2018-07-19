@@ -3,19 +3,20 @@
 <aw-wizard #wizard [navBarLayout]="'large-empty-symbols'">
   <aw-wizard-step [stepTitle]="'Location'" [navigationSymbol]="{ symbol: '&#xf278;', fontFamily: 'FontAwesome' }">
     <div class="centered-content">
-      <div>
+      <div class="header">
         Let's start with the basic details
-      </div>
-			<label>Location:</label><br>
-			<app-auto-complete></app-auto-complete>
-      <div class="btn-group">
-        <button type="button" class="btn btn-secondary" awNextStep>Continue</button>
+			</div>
+			<div class="centerContent">
+					<app-auto-complete align="center"></app-auto-complete>
+		  </div>
+      <div class="">
+        <button type="button" class="btn btn-secondary rightBtn" awNextStep>Continue</button>
       </div>
     </div>
   </aw-wizard-step>
   <aw-wizard-step [stepTitle]="'Time'" [navigationSymbol]="{ symbol: '&#xf017;', fontFamily: 'FontAwesome' }">
     <div class="centered-content">
-      <div>
+      <div class="header">
         How much time would you like your trip to be?
       </div>
 			<div class="row">
@@ -23,7 +24,7 @@
 				<div class="col-sm-2 col-sm-offset-2">
 						<div class="form-group">
 								<label>Amount</label><br>
-								<input id="amount" type="text" name="amount" value="10" placeholder="Input" class="form-control border-input" />
+								<input id="amount" type="text" name="amount" value="10" placeholder="Input" align="right" class="form-control border-input" />
 						</div>
 	</div>
 				<div class="col-sm-6">
@@ -38,28 +39,26 @@
 				</div>
 	</div>
 		</div>
-      <div class="btn-group">
-        <button type="button" class="btn btn-secondary" awPreviousStep>Back</button>
-        <button type="button" class="btn btn-secondary" awNextStep>Continue</button>
+      <div class="">
+        <button type="button" class="btn btn-secondary leftBtn" awPreviousStep>Back</button>
+        <button type="button" class="btn btn-secondary rightBtn" awNextStep>Continue</button>
       </div>
     </div>
   </aw-wizard-step>
   <aw-wizard-step [stepTitle]="'Tags'" [navigationSymbol]="{ symbol: '&#xf02c;', fontFamily: 'FontAwesome' }">
     <div class="centered-content">
-      <div>
+      <div class="header">
         Select the best tags for your trip!
       </div>
 			<div class="col-sm-3" *ngFor="let theme of themes">
-
 				<label class="containerit">{{theme.item}}
 					<input class="tag" type="checkbox" name="{{theme.item}}" (click)="toggleCheckbox($event)">
 					<span class="checkmark"></span>
 				</label>
-
-		</div>
-      <div class="btn-group">
-        <button type="button" class="btn btn-secondary" awPreviousStep>Back</button>
-        <button type='button' (click)="finishFunction()" class="btn btn-secondary">Finish</button>
+			</div>
+      <div class="">
+        <button type="button" class="btn btn-secondary leftBtn" awPreviousStep>Back</button>
+        <button type='button' (click)="finishFunction()" class="btn btn-secondary rightBtn">Finish</button>
       </div>
     </div>
   </aw-wizard-step>
