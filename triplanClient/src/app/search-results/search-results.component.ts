@@ -22,6 +22,9 @@ export class SearchResultsComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     this.dialog.open(TripDetailsComponent, dialogConfig);
+    this.dialog.afterAllClosed.subscribe(result => {
+        this.searchTripsService.initTripData();
+    });
   }
 
   // TODO: Add model of trips
