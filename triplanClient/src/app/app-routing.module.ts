@@ -15,7 +15,7 @@ const appRoutes: Routes = [
         canActivate: [AnonymousGuard]
     },
     {
-        path: 'dashboard',
+        path: 'about',
         component: DashboardComponent,
         canActivate: [AuthGuard]
     }, 

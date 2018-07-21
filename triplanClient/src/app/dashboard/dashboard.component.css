@@ -25,3 +25,7 @@ body {
 mat-toolbar.toolbar.mat-toolbar.mat-primary.mat-toolbar-single-row {
   background-image: url(/assets/images/matos.jpg);
 }
+
+#myCanvas {
+  background: pink;
+}

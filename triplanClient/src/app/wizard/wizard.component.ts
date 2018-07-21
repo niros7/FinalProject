@@ -40,9 +40,39 @@ export class WizardComponent implements OnInit {
   
  finishFunction()
   {
+		var location = document.getElementsByName('autoLocation');
+		var amount = document.querySelector('#amount');
+		var range = document.querySelector('#range');
+		var period = document.querySelector('#period');
+
+		var parameters = 
+		{
+			"location":"",
+			"amount":"", 
+			"range":"", 
+			"period":"", 
+			"tags":[]
+		};
+
 		debugger;
-  		 var formSearch = document.querySelector('#formSearch');
-  
+
+		if (location != null && location.length > 0) {
+			parameters.location = (<HTMLInputElement>location[0]).value;
+		}
+
+		if (amount != null) {
+			parameters.amount = (<HTMLInputElement>amount).value;
+		}
+
+		if (range != null) {
+			parameters.range = (<HTMLInputElement>range).value;
+		}
+
+		if (period != null) {
+			parameters.period = (<HTMLInputElement>period).value;
+		}
+
+
 		  //var formParams = {};
 
 			//if(formSearch != undefined && formSearch != null){
@@ -59,7 +89,7 @@ export class WizardComponent implements OnInit {
 				//this.router.navigateByUrl(`/search?${search}`)
 				//formParams["firstName"]="John";
 				//formParams["lastName"]="Doe";
-				//this.searchTripService.setSearchParameters(formParams);
+				this.searchTripService.setSearchParameters(parameters);
 				this.router.navigateByUrl(`/search`);		
 			}
 	

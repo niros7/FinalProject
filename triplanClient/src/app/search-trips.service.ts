@@ -27,10 +27,6 @@ export class SearchTripsService {
     this.searchParam = param;
   }
 
-  getSearchParameters() {
-    return this.searchParam;
-  }
-
   initTripData() {
     this.tripIdBS.next(null);
     this.tripDetailesBS.next(null);
@@ -38,7 +34,7 @@ export class SearchTripsService {
 
   searchTrips() {
     return new Promise<Trip[]>((resolve, reject) => {
-      return this.http.get('http://localhost:3000/api/v1/Trips').toPromise().then(response => {
+      return this.http.post('http://localhost:3000/api/v1/Trips', this.searchParam).toPromise().then(response => {
         resolve(response.json() as Trip[]);
       }).catch(() => reject());
     });

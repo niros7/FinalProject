@@ -15,6 +15,7 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.userService.getCurrentUser().then(profile => this.currentUser = profile)
         .catch(() => this.currentUser = {});
+
   }
 
   menuButtonClicked(routName) {

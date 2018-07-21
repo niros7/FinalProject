@@ -40,8 +40,8 @@ export class SearchResultsComponent implements OnInit {
   }
 
   ngOnInit() {
+    debugger;
     this.isDialogOpen = false;
-    var a = this.searchTripsService.getSearchParameters();
     this.searchTrips();
     this.searchTripsService.isOpenDialog.subscribe(res => { if(res){this.openDialog()}});
   }

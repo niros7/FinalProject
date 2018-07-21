@@ -7,7 +7,7 @@
         Let's start with the basic details
 			</div>
 			<div class="centerContent">
-					<app-auto-complete align="center"></app-auto-complete>
+					<app-auto-complete id="location" align="center"></app-auto-complete>
 		  </div>
       <div class="">
         <button type="button" class="btn btn-secondary rightBtn" awNextStep>Continue</button>
@@ -26,9 +26,15 @@
 								<label>Amount</label><br>
 								<input id="amount" type="text" name="amount" value="10" placeholder="Input" align="right" class="form-control border-input" />
 						</div>
-	</div>
-				<div class="col-sm-6">
-			<div class="form-group">
+				</div>
+				<div class="col-sm-2 col-sm-offset0">
+						<div class="form-group">
+								<label>Days range</label><br>
+								<input id="range" type="text" name="range" value="0" placeholder="Input" align="right" class="form-control border-input" />
+						</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
 						<label>Period</label><br>
 						<select name="period" class="form-control" id="period">
 								<option value="days"> Days </option>
@@ -36,9 +42,9 @@
 										<option value="months"> Months </option>
 										<option value="years"> Years </option>
 						</select>
+					</div>
 				</div>
-	</div>
-		</div>
+			</div>
       <div class="">
         <button type="button" class="btn btn-secondary leftBtn" awPreviousStep>Back</button>
         <button type="button" class="btn btn-secondary rightBtn" awNextStep>Continue</button>

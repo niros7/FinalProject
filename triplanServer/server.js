@@ -114,12 +114,10 @@ router.route('/auth/me')
 
 
 var getTrips = function(req, res) {
-  console.log("get trip in");
+  console.log(req.body);
  // For now, we select x trips whithout the 'where' cluase
  let query = legendaryTripModel.find({}).limit(5);
  query.exec(function(err,data){
-    console.log("data");
-    console.log(data);
     res.json(data);
  });
 };
@@ -214,7 +212,7 @@ router.route('/trips/:id')
   .get(authenticate, getTripData);
 
 router.route('/Trips')
-  .get(authenticate, getTrips);
+  .post(authenticate, getTrips);
 
 router.route('/Locations')
   .get(authenticate, getLocations);
