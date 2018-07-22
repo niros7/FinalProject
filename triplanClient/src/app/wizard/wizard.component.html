@@ -3,9 +3,9 @@
 <aw-wizard #wizard [navBarLayout]="'large-empty-symbols'">
   <aw-wizard-step [stepTitle]="'Location'" [navigationSymbol]="{ symbol: '&#xf278;', fontFamily: 'FontAwesome' }">
     <div class="centered-content">
-      <div class="header">
+      <header class="header">
         Let's start with the basic details
-			</div>
+			</header>
 			<div class="centerContent">
 					<app-auto-complete id="location" align="center"></app-auto-complete>
 		  </div>
@@ -16,9 +16,9 @@
   </aw-wizard-step>
   <aw-wizard-step [stepTitle]="'Time'" [navigationSymbol]="{ symbol: '&#xf017;', fontFamily: 'FontAwesome' }">
     <div class="centered-content">
-      <div class="header">
+      <header class="header">
         How much time would you like your trip to be?
-      </div>
+      </header>
 			<div class="row">
                                             
 				<div class="col-sm-2 col-sm-offset-2">
@@ -53,9 +53,9 @@
   </aw-wizard-step>
   <aw-wizard-step [stepTitle]="'Tags'" [navigationSymbol]="{ symbol: '&#xf02c;', fontFamily: 'FontAwesome' }">
     <div class="centered-content">
-      <div class="header">
+      <header class="header">
         Select the best tags for your trip!
-      </div>
+      </header>
 			<div class="col-sm-3" *ngFor="let theme of themes">
 				<label class="containerit">{{theme.item}}
 					<input class="tag" type="checkbox" name="{{theme.item}}" (click)="toggleCheckbox($event)">
