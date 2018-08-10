@@ -24,7 +24,7 @@ export class AnonymousGuard implements CanActivate {
         debugger;
         return new Promise((resolve, reject) => {
             this.userService.isLoggedIn().then(() => {
-                this.router.navigate(['/dashboard']);
+                this.router.navigate(['/about']);
                 reject(false);
             }).catch(() => {
                 resolve(true);
