@@ -3,6 +3,7 @@ import { SearchTripsService } from '../search-trips.service';
 import { Trip } from '../models/Trip.model';
 import { OnDestroy } from "@angular/core";
 import { ISubscription } from "rxjs/Subscription";
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-trip-details',
@@ -11,7 +12,8 @@ import { ISubscription } from "rxjs/Subscription";
 })
 export class TripDetailsComponent implements OnInit {
 
-  constructor(private searchTripsService: SearchTripsService) { }
+  constructor(private searchTripsService: SearchTripsService,
+    public sanitizer: DomSanitizer) { }
 
   isShowSpinner: boolean;
 
