@@ -24,7 +24,7 @@ export class AutoCompleteComponent implements OnInit {
       this.searchResult = [];
       debugger;
       this.Locations.map(location => {
-       if (String(location.Location).includes(data)) {
+       if (String(location.Location).toLowerCase().includes(String(data).toLowerCase())) {
         this.searchResult.push(location);
       }});
   });
