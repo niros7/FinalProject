@@ -113,8 +113,16 @@ router.route('/auth/me')
   .get(authenticate, getCurrentUser, getOne);
 
 
+  // Link: String,
+  //  Title: String,
+  //  SubTitle: String,
+  //  Destinations: [String],
+  //  Duration: String,
+  //  Themes: [String],
+  //  Steps: [{ Title: String, Content: String }]
+
 var getTrips = function(req, res) {
-  console.log(req.body);
+  console.log("req.body:" + req.body);
  // For now, we select x trips whithout the 'where' cluase
  let query = legendaryTripModel.find({}).limit(5);
  query.exec(function(err,data){
