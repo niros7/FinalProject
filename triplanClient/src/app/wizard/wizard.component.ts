@@ -72,6 +72,17 @@ export class WizardComponent implements OnInit {
 			parameters.period = (<HTMLInputElement>period).value;
 		}
 
+	
+		parameters.tags = [];
+		var selectedTagsArr = document.getElementsByClassName("tagV");
+		
+		if (selectedTagsArr != null){
+		for(var i=0; i<selectedTagsArr.length; i++)
+				parameters.tags.push(<HTMLInputElement>selectedTagsArr[i].attributes["name"].value);
+	}
+
+		console.log("Tags are: " + parameters.tags);
+
 
 		  //var formParams = {};
 
