@@ -15,6 +15,7 @@ mongoose();
 
 var User = require('mongoose').model('User');
 var legendaryTripModel = require('mongoose').model('LegendaryTrip');
+var tripModel = require('mongoose').model('Trip');
 
 var passportConfig = require('./passport');
 
@@ -116,7 +117,7 @@ router.route('/auth/me')
 var getTrips = function(req, res) {
   console.log(req.body);
  // For now, we select x trips whithout the 'where' cluase
- let query = legendaryTripModel.find({}).limit(5);
+ let query = tripModel.find({}).limit(5);
  query.exec(function(err,data){
     res.json(data);
  });
@@ -126,7 +127,7 @@ function getTripItinerary(req, res) {
   console.log(req.params);
   console.log(req.params.id);
   
-  let query = legendaryTripModel.findById(req.params.id);
+  let query = tripModel.findById(req.params.id);
   query.exec(function(err,data){
     if(!data) {
       return undefined
@@ -143,7 +144,7 @@ function getTripItinerary(req, res) {
 
 function getTripData(req, res) {
   console.log(req.params);
-  let query = legendaryTripModel.findById(req.params.id);
+  let query = tripModel.findById(req.params.id);
   query.exec(function(err,data){
     if(!data) {
       console.log("error");
@@ -156,7 +157,7 @@ function getTripData(req, res) {
 };
 
 function getLocations(req, res) {
-  var query = legendaryTripModel.aggregate([{$unwind:"$Steps"},
+  var query = tripModel.aggregate([{$unwind:"$Steps"},
     {$project :{_id:1, Steps:{Locations:{Text:1}}, Destinations:1}},
       { $project: { Locations: { $concatArrays: [ "$Steps.Locations.Text", "$Destinations" ] } } },
       {$unwind:"$Locations"},
@@ -169,8 +170,8 @@ function getLocations(req, res) {
 };
 
 function getAllThemes(req, res){
-  var query = legendaryTripModel.aggregate([
-     { $project: { items: { $concatArrays: [ "$Themes" ] } } },
+  var query = tripModel.aggregate([
+     { $project: { items: { $concatArrays: [ "$Tags" ] } } },
      {$unwind:"$items"},
      {$group:{_id: "$items"}},
      {$project:{_id:0,item: "$_id"}}

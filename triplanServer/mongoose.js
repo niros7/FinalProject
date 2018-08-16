@@ -67,7 +67,19 @@ module.exports = function () {
    Steps: [{ Title: String, Content: String }]
   });
 
-  UserSchema.set('toJSON', {getters: true, virtuals: true});
+  // create a schema
+  let tripSchema = new Schema({
+    Title: String,
+    Description: String,
+    Duration: String,
+    Destinations: [String],
+    Link: String,
+    Tags: [String],
+    Locations: [String]
+   });
+
+   tripSchema.set('toJSON', {getters: true, virtuals: true});
+   mongoose.model('Trip', tripSchema);
 
   mongoose.model('LegendaryTrip', legendaryTripSchema);
 
