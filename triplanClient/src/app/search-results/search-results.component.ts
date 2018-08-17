@@ -14,19 +14,6 @@ export class SearchResultsComponent implements OnInit {
   constructor(private searchTripsService: SearchTripsService,
     private dialog: MatDialog) { }
 
-  openDialog() {
-
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-
-    this.dialog.open(TripDetailsComponent, dialogConfig);
-    this.dialog.afterAllClosed.subscribe(result => {
-        this.searchTripsService.initTripData();
-    });
-  }
-
   // TODO: Add model of trips
   trips: Trip[]; 
   errorMessage: string;
@@ -44,6 +31,5 @@ export class SearchResultsComponent implements OnInit {
     debugger;
     this.isDialogOpen = false;
     this.searchTrips();
-    this.searchTripsService.isOpenDialog.subscribe(res => { if(res){this.openDialog()}});
   }
 }

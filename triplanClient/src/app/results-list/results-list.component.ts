@@ -28,10 +28,25 @@ export class ResultsListComponent implements OnInit {
     this.itinerariesService.changeSelectedItinerary(id);
   }
 
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(TripDetailsComponent, dialogConfig);
+    this.dialog.afterAllClosed.subscribe(result => {
+        this.searchTripService.initTripData();
+    });
+  }
+
+
   showTripDetails(id) {
     debugger;
     this.isShowTripDtl = true;
-    this.searchTripService.cahangeDialog(true);
+    this.openDialog();
+    //this.searchTripService.cahangeDialog(true);
     this.searchTripService.setTripId(id);
   }
 }

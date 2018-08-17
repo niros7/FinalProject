@@ -10,9 +10,6 @@ export class SearchTripsService {
 
   searchParam;
 
-  private isOpenDialogBS = new BehaviorSubject<any>(false); 
-  isOpenDialog = this.isOpenDialogBS.asObservable();
-
   private tripDetailesBS = new BehaviorSubject<any>(null); 
   tripDetailes = this.tripDetailesBS.asObservable();
 
@@ -46,10 +43,6 @@ export class SearchTripsService {
         resolve(response.json() as Location[]);
       }).catch(() => reject());
     });
-  }
-
-  cahangeDialog(isOpen) {
-    this.isOpenDialogBS.next(isOpen);
   }
 
   getTripData(id) {
