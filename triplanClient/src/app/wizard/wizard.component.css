@@ -1,3 +1,8 @@
+#back{
+  background-image: url("../../assets/images/nicebackground.jpg");
+  background-size: 100% 100%;
+  background-position:center;
+}
 .card {
   width: 75%;
   padding: 5%;
