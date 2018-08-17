@@ -10,8 +10,8 @@
             <mat-divider [inset]="true"></mat-divider>
             <h6 mat-subheader>Themes</h6>
             <mat-chip-list>
-              <mat-chip class="chipTheme" *ngFor="let theme of trip.Themes" selected="true" [color]="">
-                {{theme}}
+              <mat-chip class="chipTheme" *ngFor="let tag of trip.Tags" selected="true" [color]="">
+                {{tag}}
               </mat-chip>
             </mat-chip-list>
           </mat-card-content>

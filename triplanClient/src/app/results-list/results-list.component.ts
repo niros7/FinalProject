@@ -29,6 +29,7 @@ export class ResultsListComponent implements OnInit {
   }
 
   showTripDetails(id) {
+    debugger;
     this.isShowTripDtl = true;
     this.searchTripService.cahangeDialog(true);
     this.searchTripService.setTripId(id);

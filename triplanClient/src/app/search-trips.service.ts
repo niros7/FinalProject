@@ -41,7 +41,6 @@ export class SearchTripsService {
   }
 
   getLocations() {
-    debugger;
     return new Promise<Location[]>((resolve, reject) => {
       return this.http.get('http://localhost:3000/api/v1/Locations').toPromise().then(response => {
         resolve(response.json() as Location[]);
@@ -55,7 +54,6 @@ export class SearchTripsService {
 
   getTripData(id) {
     this.http.get('http://localhost:3000/api/v1/trip/'+ id).toPromise().then(response => {
-      debugger;
       this.tripDetailesBS.next(response.json());
        }).catch();
     }

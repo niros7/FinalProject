@@ -10,8 +10,8 @@
           <mat-divider [inset]="true"></mat-divider>
           <h6 mat-subheader>Themes</h6>
           <mat-chip-list>
-            <mat-chip class="chipTheme" *ngFor="let theme of tripData.Themes" selected="true" [color]="">
-              {{theme}}
+            <mat-chip class="chipTheme" *ngFor="let tag of tripData.Tags" selected="true" [color]="">
+              {{tag}}
             </mat-chip>
           </mat-chip-list>
           <iframe [src]='sanitizer.bypassSecurityTrustResourceUrl(tripData.Link)' width="640" height="360" frameborder="0"
