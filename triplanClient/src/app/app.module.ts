@@ -8,6 +8,7 @@ import { UserService } from './user.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NoresultComponent } from './noresult/noresult.component';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import {ItinerariesService} from './itineraries.service'; 
@@ -64,6 +65,7 @@ export function getAuthHttp(http: Http) {
     AppComponent,
     LoginComponent,
     DashboardComponent,
+    NoresultComponent,
     SearchResultsComponent,
     ItineraryMapComponent,
     ResultsListComponent,

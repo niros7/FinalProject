@@ -3,6 +3,7 @@ import { SearchTripsService } from '../search-trips.service';
 import {Trip} from "../models/Trip.model";
 import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { TripDetailsComponent } from '../trip-details/trip-details.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-results',
@@ -12,7 +13,7 @@ import { TripDetailsComponent } from '../trip-details/trip-details.component';
 export class SearchResultsComponent implements OnInit {
 
   constructor(private searchTripsService: SearchTripsService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog, private router: Router) { }
 
   // TODO: Add model of trips
   trips: Trip[]; 
@@ -24,11 +25,13 @@ export class SearchResultsComponent implements OnInit {
     this.searchTripsService.searchTrips().then(searchedTrips => { 
       debugger;
       this.trips = searchedTrips;
+      if(this.trips.length == 0 || this.trips == null || this.trips == undefined){
+        this.router.navigate(['/noresult']);
+      }
     }, error => this.errorMessage = <any>error);
   }
 
   ngOnInit() {
-    debugger;
     this.isDialogOpen = false;
     this.searchTrips();
   }
