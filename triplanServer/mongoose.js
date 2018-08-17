@@ -71,7 +71,7 @@ module.exports = function () {
   let tripSchema = new Schema({
     Title: String,
     Description: String,
-    Duration: String,
+    Duration: Number,
     Destinations: [String],
     Link: String,
     Tags: [String],

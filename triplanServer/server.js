@@ -123,13 +123,115 @@ router.route('/auth/me')
   //  Steps: [{ Title: String, Content: String }]
 
 var getTrips = function(req, res) {
-  console.log("req.body:" + req.body);
+  var filter = {};
+  debugger;
+  if ((req.body.location!=null && req.body.location!='') && req.body.amount!=null && req.body.tags.length > 0) {
+    parseAmount(filter, req.body);
+    tripModel.find({}).where('Locations').in([req.body.location]).where('Duration').gt(filter.amount-filter.range).
+    lt(filter.amount+filter.range).where('Tags').in(req.body.tags)
+    .exec(function(err, trips) { tripCallBack(err, trips, res);});
+
+  } else if ((req.body.location!=null && req.body.location!='') && req.body.tags.length > 0) {
+    tripModel.find({}).where('Locations').in([req.body.location]).where('Tags').in(req.body.tags)
+    .exec(function(err, trips) { tripCallBack(err, trips, res);});
+
+  } else if ((req.body.location!=null && req.body.location!='') && req.body.amount!=null) {
+    parseAmount(filter, req.body);
+    tripModel.find({}).where('Locations').in([req.body.location]).where('Duration').gt(filter.amount-filter.range).
+                       lt(filter.amount+filter.range).exec(function(err, trips) { tripCallBack(err, trips, res);});
+
+  } else if (req.body.tags.length > 0 && req.body.amount!=null) {
+    parseAmount(filter, req.body);
+    tripModel.find({}).where('Duration').gt(filter.amount-filter.range).
+    lt(filter.amount+filter.range).where('Tags').in(req.body.tags)
+    .exec(function(err, trips) { tripCallBack(err, trips, res);});
+
+  } else if (req.body.location!=null && req.body.location!='') {
+    tripModel.find({}).where('Locations').in([req.body.location]).exec(function(err, trips) { tripCallBack(err, trips, res);});
+
+  } else if (req.body.amount!=null) {
+    parseAmount(filter, req.body);
+    tripModel.find({}).where('Duration').gt(filter.amount-filter.range).
+                       lt(filter.amount+filter.range).exec(function(err, trips) { tripCallBack(err, trips, res);});
+
+  } else if (req.body.tags.length > 0) {
+    tripModel.find({}).where('Tags').in(req.body.tags).exec(function(err, trips) { tripCallBack(err, trips, res);});
+
+  } else {
+    res.json();
+  }
+
+
+
+  
+  /*if (req.body.location!=null) {
+    filter.location = req.body.location;
+  }
+
+  if (req.body.amount!=null) {
+    filter.amount = parseInt(req.body.amount);
+
+    if (req.body.range!=null) {
+      filter.range =  parseInt(req.body.range);
+    } else {
+      filter.range = 0;
+    }
+    debugger;
+    tripModel.find({}).where('Locations').in([filter.location])
+    .where('Duration').gt(filter.amount-filter.range).lt(filter.amount+filter.range).exec(function(err, trips) {
+      if (err) {
+        console.error(err);
+        res.statusCode = 500;
+        return res.json({ errors: ['Could not get trips'] });
+      } else {
+        res.json(trips);
+      }
+      debugger;
+    });
+  }
+  debugger;*/
+
+  /*tripModel.find({}).where('Duration').gt().lt().exec();
+  tripModel.find(filter, function(err, trips) {
+    if (err) {
+      console.error(err);
+      res.statusCode = 500;
+      return res.json({ errors: ['Could not get trips'] });
+    } else {
+      res.json(trips);
+    }
+  });*/
+
+
+  /*if (req.body.location != null) {
+
+  }*/
  // For now, we select x trips whithout the 'where' cluase
- let query = tripModel.find({}).limit(5);
+ /*let query = tripModel.find({}).limit(5);
  query.exec(function(err,data){
     res.json(data);
- });
+ });*/
 };
+
+function parseAmount(filter, body) {
+  filter.amount = parseInt(body.amount);
+
+  if (body.range!=null) {
+    filter.range =  parseInt(body.range);
+  } else {
+    filter.range = 0;
+  }
+}
+
+function tripCallBack(err, trips, res) {
+  if (err) {
+    console.error(err);
+    res.statusCode = 500;
+    return res.json({ errors: ['Could not get trips'] });
+  } else {
+    res.json(trips);
+  }
+}
 
 function getTripItinerary(req, res) {
   console.log(req.params);
