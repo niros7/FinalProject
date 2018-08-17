@@ -266,14 +266,21 @@ function getTripData(req, res) {
  });
 };
 
-function getLocations(req, res) {
-  var query = tripModel.aggregate([{$unwind:"$Steps"},
+/*function getLocations(req, res) {
+  var query = legendaryTripModel.aggregate([{$unwind:"$Steps"},
     {$project :{_id:1, Steps:{Locations:{Text:1}}, Destinations:1}},
       { $project: { Locations: { $concatArrays: [ "$Steps.Locations.Text", "$Destinations" ] } } },
       {$unwind:"$Locations"},
       {$group:{_id: "$Locations"}},
       {$project:{_id:0,Location: "$_id"}}
     ]);
+    query.exec(function(err,data){
+      res.json(data);
+  });
+};*/
+
+function getLocations(req, res) {
+  var query = tripModel.aggregate([{$unwind:"$Locations"},{$group:{_id:"$Locations"}},{$project:{_id:0,Location:"$_id"}}]);
     query.exec(function(err,data){
       res.json(data);
   });
