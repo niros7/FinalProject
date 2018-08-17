@@ -17,10 +17,7 @@ export class DashboardComponent implements OnInit {
     this.userService.getCurrentUser().then(profile => this.currentUser = profile)
         .catch(() => this.currentUser = {});
 
-    var c= <HTMLCanvasElement> document.getElementById("myCanvas");
-    var ctx=c.getContext("2d");
-    ctx.font = "14px Arial";
-    ctx.strokeText("אין לי מושג מה עושים עם הcanvas הזה אבל חייב להשתמש בו לאליקציות אינטר", 100,20);
+
   }
 
   logout() {
