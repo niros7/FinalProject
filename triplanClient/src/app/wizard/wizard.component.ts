@@ -51,7 +51,8 @@ export class WizardComponent implements OnInit {
 			"amount":"", 
 			"range":"", 
 			"period":"", 
-			"tags":[]
+			"tags":[],
+			"totalDaysAmount":0
 		};
 
 		debugger;
@@ -72,6 +73,22 @@ export class WizardComponent implements OnInit {
 			parameters.period = (<HTMLInputElement>period).value;
 		}
 
+		switch(parameters.period)
+		{
+			case "Days": 
+				parameters.totalDaysAmount = Number(parameters.amount);
+				break;
+			case "Weeks":
+				parameters.totalDaysAmount = Number(parameters.amount) * 7;
+				break;
+			case "Months":
+				parameters.totalDaysAmount = Number(parameters.amount) * 30;
+				break;
+			case "Years":
+				parameters.totalDaysAmount = Number(parameters.amount) * 365;
+				break;
+		}
+
 	
 		parameters.tags = [];
 		var selectedTagsArr = document.getElementsByClassName("tagV");
@@ -79,7 +96,7 @@ export class WizardComponent implements OnInit {
 		if (selectedTagsArr != null){
 		for(var i=0; i<selectedTagsArr.length; i++)
 				parameters.tags.push(<HTMLInputElement>selectedTagsArr[i].attributes["name"].value);
-	}
+		}
 
 		console.log("Tags are: " + parameters.tags);
 
@@ -102,6 +119,6 @@ export class WizardComponent implements OnInit {
 				//formParams["lastName"]="Doe";
 				this.searchTripService.setSearchParameters(parameters);
 				this.router.navigateByUrl(`/search`);		
-			}
+	}
 	
   }

@@ -3,11 +3,11 @@ import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-noresult',
+  templateUrl: './noresult.component.html',
+  styleUrls: ['./noresult.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class NoresultComponent implements OnInit {
 
   public currentUser : any = {};
 
@@ -16,10 +16,12 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.userService.getCurrentUser().then(profile => this.currentUser = profile)
         .catch(() => this.currentUser = {});
-
-
   }
 
+  menuButtonClicked(routName) {
+    this.router.navigate([routName]);
+  }
+  
   logout() {
     this.userService.logout();
     this.router.navigate(['/welcome']);

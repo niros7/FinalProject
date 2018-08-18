@@ -124,35 +124,38 @@ router.route('/auth/me')
 
 var getTrips = function(req, res) {
   var filter = {};
-  debugger;
-  if ((req.body.location!=null && req.body.location!='') && req.body.amount!=null && req.body.tags.length > 0) {
-    parseAmount(filter, req.body);
+  filter = parseAmount(filter, req.body);
+  
+  if ((req.body.location!=null && req.body.location!='') && req.body.amount!=null && req.body.tags.length > 0 && filter.range> 0) {
+   
     tripModel.find({}).where('Locations').in([req.body.location]).where('Duration').gt(filter.amount-filter.range).
     lt(filter.amount+filter.range).where('Tags').in(req.body.tags)
-    .exec(function(err, trips) { tripCallBack(err, trips, res);});
+    .exec(function(err, trips) {
+       tripCallBack(err, trips, res);});
 
   } else if ((req.body.location!=null && req.body.location!='') && req.body.tags.length > 0) {
     tripModel.find({}).where('Locations').in([req.body.location]).where('Tags').in(req.body.tags)
     .exec(function(err, trips) { tripCallBack(err, trips, res);});
 
   } else if ((req.body.location!=null && req.body.location!='') && req.body.amount!=null) {
-    parseAmount(filter, req.body);
-    tripModel.find({}).where('Locations').in([req.body.location]).where('Duration').gt(filter.amount-filter.range).
-                       lt(filter.amount+filter.range).exec(function(err, trips) { tripCallBack(err, trips, res);});
+    debugger;
+    tripModel.find({}).where('Locations').in([req.body.location]).where('Duration').gte(filter.amount-filter.range).
+    lte(filter.amount+filter.range).exec(function(err, trips) { tripCallBack(err, trips, res);});
 
   } else if (req.body.tags.length > 0 && req.body.amount!=null) {
-    parseAmount(filter, req.body);
     tripModel.find({}).where('Duration').gt(filter.amount-filter.range).
     lt(filter.amount+filter.range).where('Tags').in(req.body.tags)
     .exec(function(err, trips) { tripCallBack(err, trips, res);});
 
-  } else if (req.body.location!=null && req.body.location!='') {
+  } 
+   else if (req.body.location!=null && req.body.location!='') {
     tripModel.find({}).where('Locations').in([req.body.location]).exec(function(err, trips) { tripCallBack(err, trips, res);});
 
-  } else if (req.body.amount!=null) {
-    parseAmount(filter, req.body);
-    tripModel.find({}).where('Duration').gt(filter.amount-filter.range).
-                       lt(filter.amount+filter.range).exec(function(err, trips) { tripCallBack(err, trips, res);});
+  }
+  else if (req.body.amount!=null) {
+    debugger;
+    tripModel.find({}).where('Duration').gte(filter.amount-filter.range).
+                       lte(filter.amount+filter.range).exec(function(err, trips) { tripCallBack(err, trips, res);});
 
   } else if (req.body.tags.length > 0) {
     tripModel.find({}).where('Tags').in(req.body.tags).exec(function(err, trips) { tripCallBack(err, trips, res);});
@@ -221,6 +224,7 @@ function parseAmount(filter, body) {
   } else {
     filter.range = 0;
   }
+  return filter;
 }
 
 function tripCallBack(err, trips, res) {
@@ -230,6 +234,7 @@ function tripCallBack(err, trips, res) {
     return res.json({ errors: ['Could not get trips'] });
   } else {
     res.json(trips);
+    debugger;
   }
 }
 
@@ -266,14 +271,21 @@ function getTripData(req, res) {
  });
 };
 
-function getLocations(req, res) {
-  var query = tripModel.aggregate([{$unwind:"$Steps"},
+/*function getLocations(req, res) {
+  var query = legendaryTripModel.aggregate([{$unwind:"$Steps"},
     {$project :{_id:1, Steps:{Locations:{Text:1}}, Destinations:1}},
       { $project: { Locations: { $concatArrays: [ "$Steps.Locations.Text", "$Destinations" ] } } },
       {$unwind:"$Locations"},
       {$group:{_id: "$Locations"}},
       {$project:{_id:0,Location: "$_id"}}
     ]);
+    query.exec(function(err,data){
+      res.json(data);
+  });
+};*/
+
+function getLocations(req, res) {
+  var query = tripModel.aggregate([{$unwind:"$Locations"},{$group:{_id:"$Locations"}},{$project:{_id:0,Location:"$_id"}}]);
     query.exec(function(err,data){
       res.json(data);
   });
