@@ -1,0 +1,9 @@
+.themes {
+    overflow:scroll;
+    height:15vh;
+    width: 30vw;
+}
+
+.ck{
+    display:inline-block;
+}

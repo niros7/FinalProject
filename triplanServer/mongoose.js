@@ -88,7 +88,7 @@ module.exports = function () {
       Destinations: [trip.Destination],
       Locations: [],
       Text: trip.Text,
-      Tags:[]
+      Tags:trip.Tags
     });
   
     newTrip.save(function(error, savedTrip) {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
 import { InsertStoryService } from '../insert-story.service';
 import {MatSnackBar} from '@angular/material';
+import { ThemesService } from '../themes.service';
 
 @Component({
   selector: 'app-add-story',
@@ -12,11 +13,18 @@ export class AddStoryComponent implements OnInit {
 
   addStoryForm: FormGroup;
   isSpinner:Boolean;
+  themes: String[]; 
+  errorMessage: string;
   constructor(private insertStoryService:InsertStoryService,
-    public snackBar: MatSnackBar) {  
+    public snackBar: MatSnackBar,
+  private themesService:ThemesService) {  
   }
 
   ngOnInit() {
+    this.themesService.getThemes().then(themes => { 
+      this.themes = themes; 
+    }, error => this.errorMessage = <any>error);
+
     this.addStoryForm = new FormGroup({
       Title: new FormControl(),
       Description: new FormControl(),
@@ -28,9 +36,27 @@ export class AddStoryComponent implements OnInit {
     this.isSpinner = false;
   }
 
+  toggleCheckbox(event) { 
+		debugger;
+		const element = event.srcElement;
+		element.classList.toggle('tag');
+		element.classList.toggle('tagV');
+  }
+
   onSubmit() {
     debugger;
     if (this.addStoryForm.valid) {
+
+      var tags = [];
+		  var selectedTagsArr = document.getElementsByClassName("tagV");
+		
+		  if (selectedTagsArr != null){
+		  for(var i=0; i<selectedTagsArr.length; i++)
+      tags.push(<HTMLInputElement>selectedTagsArr[i].attributes["name"].value);
+      }
+
+      this.addStoryForm.value['Tags'] = tags;
+      
       this.isSpinner = true;
       this.insertStoryService.insertStory(this.addStoryForm.value).then((isAdded) => {
         if (isAdded) {
