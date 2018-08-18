@@ -1,0 +1,15 @@
+<form [formGroup]="addStoryForm" novalidate class="add-story-form" (ngSubmit)="onSubmit()">
+  <mat-card>
+    
+      <input matInput class="form-control space" formControlName="Title" placeholder="Title" value="">
+
+      <input matInput class="form-control space" formControlName="Description" placeholder="Description" value="">
+      
+      <input matInput type="number" class="form-control space" formControlName="Duration" placeholder="Duration" value="">
+      <input matInput class="form-control space" formControlName="Destination" placeholder="Destination" value="">
+      
+      <textarea matInput class="form-control space txtArea" formControlName="Text" placeholder="Data" value=""></textarea>
+
+      <button (click)="submit" mat-raised-button color="primary" class="btn btn-primary">Add</button>
+  </mat-card>
+</form>

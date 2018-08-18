@@ -316,6 +316,20 @@ function getAllThemes(req, res){
   }
 };
 
+function insertTrip (req, res){
+  debugger;
+  var trip = req.body;
+  tripModel.insertTrip(trip, function(err, savedTrip) {
+    if (err) {
+      console.error(err);
+      res.statusCode = 500;
+      return res.json({ errors: ['Could not add trip'] });
+    } else {
+      res.json(savedTrip);
+    }
+  });
+}
+
 router.route('/trips/:id')
   .get(authenticate, getTripItinerary);
 
@@ -331,6 +345,8 @@ router.route('/Locations')
 router.route('/Themes')
   .get(authenticate, getAllThemes);
 
+router.route('/Trips/add')
+  .post(authenticate, insertTrip);
 
 app.use('/api/v1', router);
 

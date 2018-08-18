@@ -5,6 +5,7 @@ import { HttpModule, Http } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http'; 
 import { AlertModule } from 'ngx-bootstrap';
 import { UserService } from './user.service';
+import { InsertStoryService } from './insert-story.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -14,6 +15,7 @@ import {ItinerariesService} from './itineraries.service';
 import {GeolocationService} from './geolocation.service';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { MatIconModule} from '@angular/material';
+import {AddStoryComponent} from './add-story/add-story.component';
 
 import {
   BrowserAnimationsModule
@@ -70,7 +72,8 @@ export function getAuthHttp(http: Http) {
     WizardComponent,
     Tab1CompComponent,
     AutoCompleteComponent,
-    TripDetailsComponent
+    TripDetailsComponent,
+    AddStoryComponent
   ],
   entryComponents: [
     TripDetailsComponent
@@ -102,6 +105,7 @@ export function getAuthHttp(http: Http) {
     SearchTripsService,
     ThemesService,
     ItinerariesService,
+    InsertStoryService,
     GeolocationService,
     {
       provide: AuthHttp,

@@ -74,9 +74,30 @@ module.exports = function () {
     Duration: Number,
     Destinations: [String],
     Link: String,
+    Text:String,
     Tags: [String],
     Locations: [String]
    });
+
+   tripSchema.statics.insertTrip = function(trip, cb) {   
+    var that = this;
+    var newTrip = new that({
+      Title: trip.Title,
+      Description: trip.Description,
+      Duration: trip.Duration,
+      Destinations: [trip.Destination],
+      Locations: [],
+      Text: trip.Text,
+      Tags:[]
+    });
+  
+    newTrip.save(function(error, savedTrip) {
+      if (error) {
+        console.log(error);
+      }
+      return cb(error, savedTrip);
+    });
+  };
 
    tripSchema.set('toJSON', {getters: true, virtuals: true});
    mongoose.model('Trip', tripSchema);

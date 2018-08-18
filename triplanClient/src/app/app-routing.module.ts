@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WizardComponent } from './wizard/wizard.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { Tab1CompComponent } from './tab1-comp/tab1-comp.component';
+import { AddStoryComponent } from './add-story/add-story.component';
 
 const appRoutes: Routes = [
     {
@@ -32,6 +33,11 @@ const appRoutes: Routes = [
     {
         path: 'cmp',
         component: Tab1CompComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path:'addStory',
+        component: AddStoryComponent,
         canActivate: [AuthGuard]
     },
     { path: '', redirectTo: 'welcome' , pathMatch: 'full' }

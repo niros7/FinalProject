@@ -19,7 +19,8 @@ import {
   MatListItem,
   MatToolbar,
   MatToolbarBase,
-  MatToolbarRow
+  MatToolbarRow,
+  MatSnackBarModule
 } from '@angular/material';
 
 const mats = [
@@ -32,7 +33,8 @@ const mats = [
   MatListModule,
   MatInputModule,
   MatChipsModule,
-  MatDividerModule
+  MatDividerModule,
+  MatSnackBarModule
 ]
 
 @NgModule({
