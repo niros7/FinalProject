@@ -14,8 +14,9 @@
               {{tag}}
             </mat-chip>
           </mat-chip-list>
-          <iframe [src]='sanitizer.bypassSecurityTrustResourceUrl(tripData.Link)' width="640" height="360" frameborder="0"
+          <iframe *ngIf="tripData.Link!=null" [src]='sanitizer.bypassSecurityTrustResourceUrl(tripData.Link)' width="640" height="360" frameborder="0"
         webkitallowfullscreen mozallowfullscreen allowfullscreen>
         </iframe>
+        <textarea *ngIf="tripData.Link==null" class="txtArea" readonly value="{{tripData.Text}}"></textarea>
         </mat-card-content>
 </mat-card>
