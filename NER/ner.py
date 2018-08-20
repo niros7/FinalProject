@@ -12,6 +12,11 @@ def extract_entities():
     labels = utils.parse_trip_steps(request_data)
     return Response(json.dumps(labels),  mimetype='application/json')
 
+@app.route('/extract-locations', methods=['POST'])
+def extract_locations():
+    request_data = request.get_json()
+    labels = utils.extract_locations(request_data['text'])
+    return Response(json.dumps(labels),  mimetype='application/json')
 
 #
 # @app.route("/")

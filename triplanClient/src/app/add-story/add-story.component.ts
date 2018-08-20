@@ -11,7 +11,9 @@ import {MatSnackBar} from '@angular/material';
 export class AddStoryComponent implements OnInit {
 
   addStoryForm: FormGroup;
-  isSpinner:Boolean;
+  isSpinner: Boolean;
+  locations: string[] = [];
+
   constructor(private insertStoryService:InsertStoryService,
     public snackBar: MatSnackBar) {  
   }
@@ -28,6 +30,14 @@ export class AddStoryComponent implements OnInit {
     this.isSpinner = false;
   }
 
+  getLocationsBeforeSubmit()
+  {
+    this.insertStoryService.extractLocationsFromText(this.addStoryForm.value.Text).then((res) => {
+        debugger;
+      //this.locations = res;
+    }).catch((err) => {console.log(err); });
+  }
+  
   onSubmit() {
     debugger;
     if (this.addStoryForm.valid) {
