@@ -13,3 +13,5 @@ triplanServer/node_modules/
 triplanServer/package-lock\.json
 
 triplanClient/node_modules/
+
+NER/.idea/workspace.xml
