@@ -12,7 +12,9 @@ import { ThemesService } from '../themes.service';
 export class AddStoryComponent implements OnInit {
 
   addStoryForm: FormGroup;
-  isSpinner:Boolean;
+  isSpinner: Boolean;
+  locations: string[] = [];
+  lables = [];
   themes: String[]; 
   errorMessage: string;
   constructor(private insertStoryService:InsertStoryService,
@@ -36,6 +38,18 @@ export class AddStoryComponent implements OnInit {
     this.isSpinner = false;
   }
 
+  getLocationsBeforeSubmit()
+  {
+    this.insertStoryService.extractLocationsFromText(this.addStoryForm.value.Text).then((res) => {
+     
+      /*this.lables = res;
+      var i;
+      for(i = 0; i < this.lables.length; i++)
+        {
+          this.locations.push(this.lables[i].Text);
+        }*/
+    }).catch((err) => {console.log(err); });
+  }
   toggleCheckbox(event) { 
 		debugger;
 		const element = event.srcElement;
@@ -43,6 +57,8 @@ export class AddStoryComponent implements OnInit {
 		element.classList.toggle('tagV');
   }
 
+  
+  
   onSubmit() {
     debugger;
     if (this.addStoryForm.valid) {

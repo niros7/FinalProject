@@ -7,6 +7,7 @@ var mongoose = require('./mongoose'),
   express = require('express'),
   jwt = require('jsonwebtoken'),
   expressJwt = require('express-jwt'),
+  request = require('request'),
   router = express.Router(),
   cors = require('cors'),
   bodyParser = require('body-parser');
@@ -342,6 +343,26 @@ function insertTrip (req, res){
   });
 }
 
+function extractLocations(req,res)
+{
+  const nerServiceUrl = "http://localhost:5000/" + "extract-locations"
+  var text = req.body;
+  debugger;
+  var locations=[];
+  request.post(
+   nerServiceUrl,
+   { json: text},
+   function (error, response, body) {
+    debugger;
+   //locations= res.body
+   res.json(body)
+    console.log(body);
+  })
+
+
+}
+
+
 router.route('/trips/:id')
   .get(authenticate, getTripItinerary);
 
@@ -359,6 +380,10 @@ router.route('/Themes')
 
 router.route('/Trips/add')
   .post(authenticate, insertTrip);
+
+router.route('/Trips/extractLocations')
+  .post(authenticate, extractLocations);
+
 
 app.use('/api/v1', router);
 

@@ -18,7 +18,19 @@
           </label>
         </div>     
       </div>   
-
+      <div *ngIf="locations.length > 0">
+      <mat-selection-list #locationslist>
+        <mat-list-option *ngFor="let loc of locations">
+          {{loc}}
+        </mat-list-option>
+      </mat-selection-list>
+      
+      <p>
+        Locations selected: {{locationslist.selectedOptions.selected.length}}
+      </p>
+      </div>
+      <button (click)="getLocationsBeforeSubmit()" type="button" class="btn btn-primary">Send Text</button>
       <button (click)="submit" mat-raised-button color="primary" class="btn btn-primary">Add</button>
   </mat-card>
 </form>
+
