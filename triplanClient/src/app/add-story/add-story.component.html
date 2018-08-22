@@ -1,36 +1,99 @@
 <form [formGroup]="addStoryForm" novalidate class="add-story-form" (ngSubmit)="onSubmit()">
-  <mat-card>
-    `<h1 class="title">Share your trip with us</h1>
-      <input matInput class="form-control space input" formControlName="Title" placeholder="Title" value="">
 
-      <input matInput class="form-control space input" formControlName="Description" placeholder="Description" value="">
-      
-      <input matInput type="number" class="form-control space input" formControlName="Duration" placeholder="Duration" value="">
-      <input matInput class="form-control space input" formControlName="Destination" placeholder="Destination" value="">
-      
-      <textarea matInput class="form-control space txtArea" formControlName="Text" placeholder="Data" value=""></textarea>
+<mat-card class="card">
+	<mat-card-content>
+      <h1 class="title">Share your trip with us</h1>
+<aw-wizard #wizard2 [navBarLayout]="'large-empty-symbols'">
+  <aw-wizard-step [stepTitle]="'Basic'" [navigationSymbol]="{ symbol: '&#xf278;', fontFamily: 'FontAwesome' }">
+    <div class="centered-content" align="center">
+      <header class="header">
+        Let's start with the basic details
+			</header>
 
-      <div class="themes">
-        <div *ngFor="let theme of themes" class="ck">
+        <div class="row">
+                                          
+            <div class="col-sm-2">
+                <!-- <div class="form-group"> -->
+
+                    <input matInput class="form-control space input" formControlName="Title" placeholder="Title" value="">
+                    <input matInput class="form-control space input" formControlName="Description" placeholder="Description" value="">
+                    <input matInput class="form-control space input" formControlName="Destination" placeholder="Destination" value="">
+
+                  <!-- </div> -->
+            </div>
+    
+          </div>
+
+      <div class="">
+        <button type="button" class="btn btn-secondary rightBtn" awNextStep>Continue</button>
+      </div>
+    </div>
+  </aw-wizard-step>
+  <aw-wizard-step [stepTitle]="'Time'" [navigationSymbol]="{ symbol: '&#xf017;', fontFamily: 'FontAwesome' }">
+    <div class="centered-content" align="center">
+       
+      <header class="header">
+        How much time would you like your trip to be?
+      </header>
+      <div class="row">
+                                            
+          <div class="col-sm-2">
+						<!-- <div class="form-group"> -->
+                <input matInput type="number" class="form-control space input" formControlName="Duration" placeholder="Days" value="">
+              <!-- </div> -->
+				</div>
+
+			</div>
+      <div class="">
+        <button type="button" class="btn btn-secondary leftBtn" awPreviousStep>Back</button>
+        <button type="button" class="btn btn-secondary rightBtn" awNextStep>Continue</button>
+      </div>
+    </div>
+  </aw-wizard-step>
+  <aw-wizard-step [stepTitle]="'Tags'" [navigationSymbol]="{ symbol: '&#xf02c;', fontFamily: 'FontAwesome' }">
+    <div class="centered-content">
+      <header class="header">
+        Select the best tags for your trip!
+      </header>
+			<div class="col-sm-3" *ngFor="let theme of themes">
           <label class="containerit">{{theme.item}}
             <input class="tag" type="checkbox" name="{{theme.item}}" (click)="toggleCheckbox($event)">
             <span class="checkmark"></span>
           </label>
-        </div>     
-      </div>   
-      <div *ngIf="locations.length > 0">
-      <mat-selection-list #locationslist>
-        <mat-list-option *ngFor="let loc of locations" (click)="onAreaListControlChanged(locationslist)" value="{{loc}}">
-            {{loc}}
-        </mat-list-option>
-      </mat-selection-list>
-      
-      <p>
-        Locations selected: {{locationslist.selectedOptions.selected.length}}
-      </p>
+
+			</div>
+      <div class="">
+        <button type="button" class="btn btn-secondary leftBtn" awPreviousStep>Back</button>
+        <button type="button" class="btn btn-secondary rightBtn" awNextStep>Continue</button>
       </div>
-      <button (click)="getLocationsBeforeSubmit()" type="button" class="btn btn-primary">Send Text</button>
-      <button (click)="submit" mat-raised-button color="primary" class="btn btn-primary">Add</button>
-  </mat-card>
+    </div>
+  </aw-wizard-step>
+  <aw-wizard-step [stepTitle]="'Write'" [navigationSymbol]="{ symbol: '&#xf02c;', fontFamily: 'FontAwesome' }">
+      <textarea matInput (change)="getLocationsBeforeSubmit()" class="form-control space txtArea" formControlName="Text" placeholder="Data" value=""></textarea>
+    <div *ngIf="locations.length > 0">
+    <mat-selection-list #locationslist> 
+      <mat-list-option *ngFor="let loc of locations" (click)="onAreaListControlChanged(locationslist)" value="{{loc}}">
+          {{loc}}
+      </mat-list-option>
+    </mat-selection-list>
+    
+    <p>
+      Locations selected: {{locationslist.selectedOptions.selected.length}}
+    </p> 
+    </div>
+    <div class="">
+      <button type="button" class="btn btn-secondary leftBtn" awPreviousStep>Back</button>
+      <button type='button' (click)="onFinish()" class="btn btn-secondary rightBtn">Add Story</button>
+    </div>
+  </aw-wizard-step>
+</aw-wizard>
+</mat-card-content>
+</mat-card>
+
 </form>
+
+
+
+
+
 
