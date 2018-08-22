@@ -356,6 +356,9 @@ function extractLocations(req,res)
    function (error, response, body) {
     debugger;
    //locations= res.body
+
+   body =  [{"Label":"GPE", "Text":"New York"},
+   {"Label":"GPE", "Text":"Israel"}];
    res.json(body)
     console.log(body);
   })

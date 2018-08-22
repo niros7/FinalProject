@@ -86,7 +86,7 @@ module.exports = function () {
       Description: trip.Description,
       Duration: trip.Duration,
       Destinations: [trip.Destination],
-      Locations: [],
+      Locations: trip.Locations,
       Text: trip.Text,
       Tags:trip.Tags
     });

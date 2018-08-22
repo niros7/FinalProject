@@ -20,8 +20,8 @@
       </div>   
       <div *ngIf="locations.length > 0">
       <mat-selection-list #locationslist>
-        <mat-list-option *ngFor="let loc of locations">
-          {{loc}}
+        <mat-list-option *ngFor="let loc of locations" (click)="onAreaListControlChanged(locationslist)" value="{{loc}}">
+            {{loc}}
         </mat-list-option>
       </mat-selection-list>
       

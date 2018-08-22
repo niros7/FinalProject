@@ -30,14 +30,11 @@ return $http({
   }*/
   
  extractLocationsFromText(text) {
+  return new Promise((resolve, reject) => {
+    return this.http.post('http://localhost:3000/api/v1/Trips/extractLocations', {"text": text}).toPromise().then(response => {
+      resolve(response.json());
+    }).catch(() => reject());
+  });
+ }
 
-    return new Promise((resolve, reject) => {
-      let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-      this.http.post('http://localhost:3000/api/v1/Trips/extractLocations' ,
-      JSON.stringify({"text": text}), options).toPromise().then(response => {
-        resolve(response);
-      }).catch(() => reject());
-    });
-  }
 }
