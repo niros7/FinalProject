@@ -69,7 +69,7 @@
     </div>
   </aw-wizard-step>
   <aw-wizard-step [stepTitle]="'Write'" [navigationSymbol]="{ symbol: '&#xf02c;', fontFamily: 'FontAwesome' }">
-      <textarea matInput (change)="getLocationsBeforeSubmit()" class="form-control space txtArea" formControlName="Text" placeholder="Data" value=""></textarea>
+      <textarea matInput (ngModelChange)="getLocationsBeforeSubmit()" class="form-control space txtArea" formControlName="Text" placeholder="Data" value=""></textarea>
     <div *ngIf="locations.length > 0">
     <mat-selection-list #locationslist> 
       <mat-list-option *ngFor="let loc of locations" (click)="onAreaListControlChanged(locationslist)" value="{{loc}}">
