@@ -83,7 +83,7 @@
     </div>
     <div class="">
       <button type="button" class="btn btn-secondary leftBtn" awPreviousStep>Back</button>
-      <button type='button' (click)="onFinish()" class="btn btn-secondary rightBtn">Add Story</button>
+      <button type='button' [disabled]="this.isSubmitDisabled" (click)="onFinish()" class="btn btn-secondary rightBtn">Add Story</button>
     </div>
   </aw-wizard-step>
 </aw-wizard>
