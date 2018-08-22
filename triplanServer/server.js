@@ -349,20 +349,19 @@ function extractLocations(req,res)
   var text = req.body;
   debugger;
   var locations=[];
-  request({
-    url: nerServiceUrl,
-    method: "POST",
-    json: text
-  }, (err, res, body) => {
+  request.post(
+   nerServiceUrl,
+   { json: text},
+   function (error, response, body) {
     debugger;
    //locations= res.body
+   res.json(body)
     console.log(body);
-
-
   })
 
 
 }
+
 
 router.route('/trips/:id')
   .get(authenticate, getTripItinerary);

@@ -13,7 +13,7 @@ export class AddStoryComponent implements OnInit {
   addStoryForm: FormGroup;
   isSpinner: Boolean;
   locations: string[] = [];
-
+  lables = [];
   constructor(private insertStoryService:InsertStoryService,
     public snackBar: MatSnackBar) {  
   }
@@ -33,10 +33,16 @@ export class AddStoryComponent implements OnInit {
   getLocationsBeforeSubmit()
   {
     this.insertStoryService.extractLocationsFromText(this.addStoryForm.value.Text).then((res) => {
-        debugger;
-      //this.locations = res;
+     
+      /*this.lables = res;
+      var i;
+      for(i = 0; i < this.lables.length; i++)
+        {
+          this.locations.push(this.lables[i].Text);
+        }*/
     }).catch((err) => {console.log(err); });
   }
+  
   
   onSubmit() {
     debugger;
