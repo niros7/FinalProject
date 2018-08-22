@@ -15,34 +15,41 @@ namespace Scraper
     {
         static void Main(string[] args)
         {
-            var rootTripsUrl = "https://www.legendarytrips.com/wp-admin/admin-ajax.php?action=get_results&paged=1&sfid=7379";
-            var tripsClient = new TripsLinkScraper();
-            var pageCounter = 2;
-            var scrapedTripsLinks = new List<string>();
-            var scrapedResult = tripsClient.Request(rootTripsUrl);
-            scrapedTripsLinks.AddRange(scrapedResult);
+            var allTrips = new HashSet<string>();
+            var rootPage = new HtmlDocument();
+            rootPage.LoadHtml(File.ReadAllText("2000.html"));
+            var cards = rootPage.DocumentNode.QuerySelectorAll(".tripcard-container a")
+                .Select(node => node.Attributes["href"].Value).Where(link => link.Contains("/trip/")).Distinct().ToList();
+            var bag = new ConcurrentBag<TripotoModel>();
+            var doneCounter = 0;
+            var locker = new Object();
 
-            while (scrapedResult.Any())
-            {
-                rootTripsUrl = $"https://www.legendarytrips.com/wp-admin/admin-ajax.php?action=get_results&paged={pageCounter}&sfid=7379";
-                scrapedResult = tripsClient.Request(rootTripsUrl);
-                scrapedTripsLinks.AddRange(scrapedResult);
-                pageCounter++;
-            }
 
-            var allTrips = new ConcurrentBag<Trip>();
-            var progress = 0;
-            Parallel.ForEach(scrapedTripsLinks, tripLink =>
+
+        Parallel.ForEach(cards, new ParallelOptions() { MaxDegreeOfParallelism = 4 } , card => 
             {
-                Console.WriteLine(progress.ToString() + ": " + tripLink);
-                progress++;
-                allTrips.Add(new TripScraper().Request(tripLink));
+                var trip = new TripotoModel();
+                try
+                {
+                    trip.FromUrl(card);
+                    bag.Add(trip);
+                    doneCounter++;
+                    Console.WriteLine(doneCounter);
+
+                    lock (locker)
+                    {
+                        if (bag.Count % 5 == 0)
+                        {
+                            var json = Newtonsoft.Json.JsonConvert.SerializeObject(bag);
+                            File.AppendAllText("AllTrips2.json", json);
+                            bag = new ConcurrentBag<TripotoModel>();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                }
             });
-
-
-
-            var json = Newtonsoft.Json.JsonConvert.SerializeObject(allTrips);
-            File.WriteAllText("AllTrips.json", json);
         }
     }
 }

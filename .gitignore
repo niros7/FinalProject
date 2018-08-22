@@ -13,3 +13,14 @@ triplanServer/node_modules/
 triplanServer/package-lock\.json
 
 triplanClient/node_modules/
+NER/\.idea/
+
+Scraper/\.vs/
+
+Scraper/packages/
+
+Scraper/Scraper/bin/
+
+Scraper/Scraper/obj/
+
+triplanClient/\.vscode/
