@@ -26,7 +26,7 @@ export class ItineraryMapComponent implements OnInit {
 
     var mapProp = {
       center: latlng,
-      zoom: 15,
+      zoom: 2,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
@@ -47,6 +47,15 @@ export class ItineraryMapComponent implements OnInit {
                 map: this.map
               })
             })
+
+            var markers = this.markers;
+            var bounds = new google.maps.LatLngBounds();
+            for (var i = 0; i < markers.length; i++) {
+             bounds.extend(markers[i].getPosition());
+            }
+            
+            this.map.fitBounds(bounds);
+
             console.log(this.markers);
           })
       }

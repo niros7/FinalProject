@@ -1,19 +1,27 @@
 <form [formGroup]="addStoryForm" novalidate class="add-story-form" (ngSubmit)="onSubmit()">
   <mat-card>
-    
-      <input matInput class="form-control space" formControlName="Title" placeholder="Title" value="">
+    `<h1 class="title">Share your trip with us</h1>
+      <input matInput class="form-control space input" formControlName="Title" placeholder="Title" value="">
 
-      <input matInput class="form-control space" formControlName="Description" placeholder="Description" value="">
+      <input matInput class="form-control space input" formControlName="Description" placeholder="Description" value="">
       
-      <input matInput type="number" class="form-control space" formControlName="Duration" placeholder="Duration" value="">
-      <input matInput class="form-control space" formControlName="Destination" placeholder="Destination" value="">
+      <input matInput type="number" class="form-control space input" formControlName="Duration" placeholder="Duration" value="">
+      <input matInput class="form-control space input" formControlName="Destination" placeholder="Destination" value="">
       
       <textarea matInput class="form-control space txtArea" formControlName="Text" placeholder="Data" value=""></textarea>
 
+      <div class="themes">
+        <div *ngFor="let theme of themes" class="ck">
+          <label class="containerit">{{theme.item}}
+            <input class="tag" type="checkbox" name="{{theme.item}}" (click)="toggleCheckbox($event)">
+            <span class="checkmark"></span>
+          </label>
+        </div>     
+      </div>   
       <div *ngIf="locations.length > 0">
       <mat-selection-list #locationslist>
-        <mat-list-option *ngFor="let loc of locations">
-          {{loc}}
+        <mat-list-option *ngFor="let loc of locations" (click)="onAreaListControlChanged(locationslist)" value="{{loc}}">
+            {{loc}}
         </mat-list-option>
       </mat-selection-list>
       
@@ -21,9 +29,8 @@
         Locations selected: {{locationslist.selectedOptions.selected.length}}
       </p>
       </div>
-      
-      <button (click)="submit" mat-raised-button color="primary" class="btn btn-primary">Add</button>
       <button (click)="getLocationsBeforeSubmit()" type="button" class="btn btn-primary">Send Text</button>
+      <button (click)="submit" mat-raised-button color="primary" class="btn btn-primary">Add</button>
   </mat-card>
 </form>
 

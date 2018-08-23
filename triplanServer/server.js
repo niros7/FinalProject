@@ -10,7 +10,8 @@ var mongoose = require('./mongoose'),
   request = require('request'),
   router = express.Router(),
   cors = require('cors'),
-  bodyParser = require('body-parser');
+  bodyParser = require('body-parser'),
+  tripoto = require('./AllTrips2');
 
 mongoose();
 
@@ -355,6 +356,9 @@ function extractLocations(req,res)
    function (error, response, body) {
     debugger;
    //locations= res.body
+
+   //body =  [{"Label":"GPE", "Text":"New York"},
+   //{"Label":"GPE", "Text":"Israel"}];
    res.json(body)
     console.log(body);
   })
@@ -362,6 +366,33 @@ function extractLocations(req,res)
 
 }
 
+function loadTripoto() {
+  let emptyArray = []
+let allTrips = tripoto.reduce((acc, curr) => {
+  acc = acc.concat(curr)
+  return acc
+}, emptyArray)
+
+allTrips.map(trip => {
+   let newTrip = new tripModel();
+   newTrip.Text = trip.Text;
+   newTrip.Link = trip.Link;
+   newTrip.Tags = trip.Tags;
+   newTrip.Title = trip.Title;
+   newTrip.Description = trip.Description;
+   newTrip.Duration = trip.Duration;
+   newTrip.Destinations = trip.Destinations
+   newTrip.Locations = trip.Locations;
+  
+   tripModel.insertTrip(newTrip, function(err, savedTrip) {
+    if (err) {
+      console.error(err);
+    }
+  });
+ })
+}
+
+// loadTripoto()
 
 router.route('/trips/:id')
   .get(authenticate, getTripItinerary);
@@ -391,3 +422,76 @@ app.listen(3000);
 module.exports = app;
 
 console.log('Server running at http://localhost:3000/');
+
+// tripModel.deleteMany( {Destinations: { $eq: [null] }  }).exec().then(x => console.log(x.length)).catch(y => console.log(y));
+
+
+/*
+function extractLocations(){
+  const nerServiceUrl = "http://localhost:5000/" + "extract-locations"
+
+  tripModel.find( {Destinations: { $eq: [null] }  }).exec().then(tripsWithoutDestinations => {
+    console.log(tripsWithoutDestinations.length);
+    
+    tripsWithoutDestinations.map(trip => {
+
+      setTimeout(() => {
+      
+        
+      request.post(
+        nerServiceUrl,
+        { json: {text: trip.Text}},
+         (error, response, body) => {
+           if(body && body.length != 0) {
+             
+             let destinations = body.map(label => label.Text)
+             console.log(destinations);
+             
+             trip.Destinations = destinations;
+             trip.save((err, updatedTrip) => {
+               if(err) {
+                 console.log(err);
+                 
+               }
+             })
+           }
+       })
+
+      }, 70);
+
+      
+    })
+  })
+}
+*/
+// for (let index = 0; index < 100; index++) {
+//   extractLocations()
+// }
+
+function legendaryToTrip() {
+  legendaryTripModel.find().exec().then(legendaries => {
+
+    let allNewTrip = []
+
+    legendaries.map(trip => {
+
+      let newTrip = new tripModel();
+        newTrip.Link = trip.Link;
+        newTrip.Title = trip.Title;
+        newTrip.Description = trip.SubTitle;
+        newTrip.Destinations = trip.Destinations;
+        newTrip.Duration = trip.Duration;
+        newTrip.Tags = trip.Themes;
+
+        allNewTrip.push(newTrip)
+    })
+
+    tripModel.collection.insert(allNewTrip, (err, doc)=> {
+      console.log(doc);
+      
+      if (err) {
+        console.log(err);
+      }
+    });
+  })
+}

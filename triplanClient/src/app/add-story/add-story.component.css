@@ -1,0 +1,39 @@
+.themes {
+    overflow:auto;
+    height:15vh;
+    width: 46vw;
+    margin-left: 17vw;
+    margin-top: 1vh;
+}
+
+.ck{
+    display:inline-block;
+}
+
+mat-card {
+    width: 80vw;
+    margin-left: 10vw;
+}
+
+.input{
+    width: 30vw;
+    margin-left: 25vw;
+    margin-top: 1vh;
+}
+
+.txtArea{
+    width: 50vw;
+    height: 20vh;
+    margin-left: 15vw;
+    margin-top: 1vh;
+}
+
+.btn {
+    width: 8vw;
+    margin-left: 36vw;
+    margin-top: 1vh;
+}
+
+.title{
+    text-align: center;
+}
