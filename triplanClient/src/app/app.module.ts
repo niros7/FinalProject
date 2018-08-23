@@ -51,6 +51,7 @@ import { MatAutocompleteModule, MatInputModule, MatDialogModule } from '@angular
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { TripDetailsComponent } from './trip-details/trip-details.component';
 import { ArchwizardModule } from 'angular-archwizard';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 export function getAuthHttp(http: Http) {
   return new AuthHttp(new AuthConfig({
@@ -75,10 +76,12 @@ export function getAuthHttp(http: Http) {
     Tab1CompComponent,
     AutoCompleteComponent,
     TripDetailsComponent,
-    AddStoryComponent
+    AddStoryComponent,
+    SpinnerComponent
   ],
   entryComponents: [
-    TripDetailsComponent
+    TripDetailsComponent,
+    SpinnerComponent
   ],
   exports: [
     ReactiveFormsModule,
