@@ -48,12 +48,12 @@ export class AddStoryComponent implements OnInit {
     this.isSubmitDisabled = (this.addStoryForm.value.Text.length > 10) ? false : true;
 
     this.locations = [];
-    this.insertStoryService.extractLocationsFromText(this.addStoryForm.value.Text).then((res:JSON[]) => {
+    this.insertStoryService.extractLocationsFromText(this.addStoryForm.value.Text).then((res: string[]) => {
       debugger;
       var loca = res;
       var i;
       for(i = 0; i < loca.length; i++) {
-        this.locations.push(loca[i]['Text']);
+        this.locations.push(loca[i]);
       }
     }).catch((err) => {console.log(err); });
     this.locations.push("israel");

@@ -357,8 +357,8 @@ function extractLocations(req,res)
     debugger;
    //locations= res.body
 
-   body =  [{"Label":"GPE", "Text":"New York"},
-   {"Label":"GPE", "Text":"Israel"}];
+   //body =  [{"Label":"GPE", "Text":"New York"},
+   //{"Label":"GPE", "Text":"Israel"}];
    res.json(body)
     console.log(body);
   })
@@ -426,7 +426,7 @@ console.log('Server running at http://localhost:3000/');
 // tripModel.deleteMany( {Destinations: { $eq: [null] }  }).exec().then(x => console.log(x.length)).catch(y => console.log(y));
 
 
-
+/*
 function extractLocations(){
   const nerServiceUrl = "http://localhost:5000/" + "extract-locations"
 
@@ -463,7 +463,7 @@ function extractLocations(){
     })
   })
 }
-
+*/
 // for (let index = 0; index < 100; index++) {
 //   extractLocations()
 // }
