@@ -39,10 +39,13 @@ export class AddStoryComponent implements OnInit {
     });
 
     this.isSpinner = false;
+    this.isSubmitDisabled = true;
   }
 
   getLocationsBeforeSubmit()
   {
+    this.isSubmitDisabled = (this.addStoryForm.value.Text.length > 10) ? false : true;
+
     this.locations = [];
     this.insertStoryService.extractLocationsFromText(this.addStoryForm.value.Text).then((res: string[]) => {
       debugger;
@@ -52,6 +55,8 @@ export class AddStoryComponent implements OnInit {
         this.locations.push(loca[i]);
       }
     }).catch((err) => {console.log(err); });
+    this.locations.push("israel");
+    this.locations.push("greece");
   }
 
   toggleCheckbox(event) { 
@@ -68,10 +73,14 @@ export class AddStoryComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    debugger;
+  
+
+  onFinish() {
+
     if (this.addStoryForm.valid) {
 
+      debugger;
+       
       var tags = [];
       var locations = [];
 		  var selectedTagsArr = document.getElementsByClassName("tagV");
@@ -111,6 +120,7 @@ export class AddStoryComponent implements OnInit {
         duration: 2000,
        });
     }
+ 
   }
 
 }
