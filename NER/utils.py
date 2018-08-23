@@ -5,9 +5,14 @@ nlp = spacy.load('en')
 
 def extract_locations(text): 
     doc = nlp(text)
+    labels = [ent.text for ent in doc.ents if ent.label_ in ['GPE']]
+    setRes = list(set(labels))
+    return setRes
+
+def extract_locations_external(text):
+    doc = nlp(text)
     labels = [{'Text': ent.text, 'Label': ent.label_} for ent in doc.ents if ent.label_ in ['GPE']]
     return labels
-
 
 def parse_trip_steps(steps):
     labels = []

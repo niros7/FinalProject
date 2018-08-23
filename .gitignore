@@ -13,6 +13,10 @@ triplanServer/node_modules/
 triplanServer/package-lock\.json
 
 triplanClient/node_modules/
+
+
+NER/.idea/workspace.xml
+
 NER/\.idea/
 
 Scraper/\.vs/
@@ -24,3 +28,5 @@ Scraper/Scraper/bin/
 Scraper/Scraper/obj/
 
 triplanClient/\.vscode/
+
+NER/__pycache__/utils.cpython-36.pyc
