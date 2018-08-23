@@ -3,6 +3,7 @@ import {FormControl, Validators, FormGroup} from '@angular/forms';
 import { InsertStoryService } from '../insert-story.service';
 import {MatSnackBar, MatListOption} from '@angular/material';
 import { ThemesService } from '../themes.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-story',
@@ -21,7 +22,8 @@ export class AddStoryComponent implements OnInit {
   errorMessage: string;
   constructor(private insertStoryService:InsertStoryService,
     public snackBar: MatSnackBar,
-  private themesService:ThemesService) {  
+  private themesService:ThemesService,
+  private router: Router) {  
   }
 
   ngOnInit() {
@@ -45,7 +47,7 @@ export class AddStoryComponent implements OnInit {
 
   getLocationsBeforeSubmit()
   {
-    this.isSubmitDisabled = (this.addStoryForm.value.Text.length > 10) ? false : true;
+    this.isSubmitDisabled = this.addStoryForm.value.Text == null ? true : (this.addStoryForm.value.Text.length > 9) ? false : true;
 
     this.locations = [];
     this.insertStoryService.extractLocationsFromText(this.addStoryForm.value.Text).then((res: string[]) => {
@@ -104,22 +106,22 @@ export class AddStoryComponent implements OnInit {
 
       this.isSpinner = true;
       this.insertStoryService.insertStory(this.addStoryForm.value).then((isAdded) => {
-        if (isAdded) {
-           this.snackBar.open("story added", 'Info', {
-            duration: 2000,
-           });
-        } else {
-          this.snackBar.open("story not added", 'Error', {
-            duration: 2000,
-           });;
-        }
+          if (isAdded) 
+          {
+            this.snackBar.open("story added", 'Info', { duration: 4000, });
+            this.router.navigateByUrl('/about');
+          } 
+          else
+          {
+            this.snackBar.open("story not added", 'Error', { duration: 4000, });
+          }
 
-        this.isSpinner = false;
+          this.isSpinner = false;
       });  
-    } else {
-      this.snackBar.open("Form not valid", 'Error', {
-        duration: 2000,
-       });
+    } 
+    else
+    {
+      this.snackBar.open("Form not valid", 'Error', { duration: 4000, });
     }
  
   }
