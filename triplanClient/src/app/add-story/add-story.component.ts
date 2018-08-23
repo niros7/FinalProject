@@ -13,6 +13,7 @@ export class AddStoryComponent implements OnInit {
 
   addStoryForm: FormGroup;
   isSpinner: Boolean;
+  isSubmitDisabled:Boolean;
   locations: string[] = [];
   lables = [];
   themes: String[]; 
