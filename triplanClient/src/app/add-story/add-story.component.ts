@@ -58,8 +58,6 @@ export class AddStoryComponent implements OnInit {
         this.locations.push(loca[i]);
       }
     }).catch((err) => {console.log(err); });
-    this.locations.push("israel");
-    this.locations.push("greece");
   }
 
   toggleCheckbox(event) { 

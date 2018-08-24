@@ -359,7 +359,14 @@ function extractLocations(req,res)
 
    //body =  [{"Label":"GPE", "Text":"New York"},
    //{"Label":"GPE", "Text":"Israel"}];
-   res.json(body)
+   if(response.statusCode == 500)
+   {
+      res.json([]);
+   }
+   else
+   {
+    res.json(body)
+   }
     console.log(body);
   })
 
