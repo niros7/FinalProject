@@ -251,7 +251,7 @@ function getTripItinerary(req, res) {
     } else {
       let result = {
         "_id": data._id,
-        "locations": data.Destinations
+        "locations": data.Locations
       }
 
       res.json(result);
