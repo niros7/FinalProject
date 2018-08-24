@@ -423,7 +423,7 @@ module.exports = app;
 
 console.log('Server running at http://localhost:3000/');
 
-// tripModel.deleteMany( {Destinations: { $eq: [null] }  }).exec().then(x => console.log(x.length)).catch(y => console.log(y));
+// tripModel.find( {Destinations: { $eq: [null] }  }).exec().then(x => console.log(x.length)).catch(y => console.log(y));
 
 
 /*
@@ -493,5 +493,26 @@ function legendaryToTrip() {
         console.log(err);
       }
     });
+  })
+}
+
+
+function reverseTrips() {
+  tripModel.find().exec().then(trips => {
+
+    trips.map(trip => {
+
+      let holder = trip.Locations;
+      trip.Locations = trip.Destinations;
+      trip.Destinations = holder;
+
+      trip.save((err, updatedTrip) => {
+        if(err) {
+          console.log(err);
+          
+        }
+      })
+
+    })
   })
 }
